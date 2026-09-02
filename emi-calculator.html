@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMI Calculator – Home, Car & Personal Loan EMI Online | PaisaKit</title>
+<meta name="description" content="Free EMI calculator for home, car and personal loans. Get monthly EMI, total interest payable and total payment instantly.">
+<link rel="canonical" href="https://kapdisagar.github.io/paisakit/emi-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"EMI Calculator","url":"https://kapdisagar.github.io/paisakit/emi-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>EMI Calculator</h1>
+  <p class="sub">Work out the monthly EMI for any home, car or personal loan.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="principal">Loan amount (₹)</label>
+      <input type="number" id="principal" value="1000000" min="10000" step="10000">
+    </div>
+    <div class="field">
+      <label for="rate">Interest rate (% p.a.)</label>
+      <input type="number" id="rate" value="9" min="0.1" max="36" step="0.05">
+    </div>
+    <div class="field">
+      <label for="years">Tenure (years)</label>
+      <input type="number" id="years" value="20" min="1" max="30" step="1">
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row big"><span class="label">Monthly EMI</span><span class="value" id="rEmi">₹0</span></div>
+    <div class="row"><span class="label">Total interest payable</span><span class="value" id="rInterest">₹0</span></div>
+    <div class="row"><span class="label">Total payment (principal + interest)</span><span class="value" id="rTotal">₹0</span></div>
+  </div>
+
+  <section class="info">
+    <h2>How EMI is calculated</h2>
+    <p>Banks use the standard reducing-balance formula:</p>
+    <div class="formula">EMI = P × r × (1+r)^n / ((1+r)^n − 1)</div>
+    <p>where P is the loan amount, r is the monthly interest rate (annual ÷ 12 ÷ 100) and n is the number of monthly instalments. Your final EMI may differ slightly if the lender charges processing fees, insurance, or rounds the instalment.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>How can I reduce my EMI?</summary><p>Three levers: a longer tenure (pays more total interest), a lower interest rate (negotiate or refinance), or a smaller loan amount. Prepaying early in the tenure cuts the most interest.</p></details>
+    <details class="faq"><summary>Does EMI stay the same for the whole loan?</summary><p>For fixed-rate loans, yes. For floating-rate loans (most home loans), the EMI or tenure resets whenever the benchmark rate changes.</p></details>
+    <details class="faq"><summary>What happens if I prepay part of the loan?</summary><p>Prepayment reduces the outstanding principal. Lenders usually let you choose between a lower EMI or a shorter tenure — a shorter tenure saves far more interest.</p></details>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:0}).format(n);
+function calc() {
+  const P = Math.max(0, +document.getElementById('principal').value || 0);
+  const annual = Math.max(0, +document.getElementById('rate').value || 0);
+  const years = Math.min(30, Math.max(1, +document.getElementById('years').value || 1));
+  const r = annual / 1200;
+  const n = years * 12;
+  let emi;
+  if (r === 0) emi = P / n;
+  else emi = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+  const total = emi * n;
+  document.getElementById('rEmi').textContent = fmt(Math.round(emi));
+  document.getElementById('rInterest').textContent = fmt(Math.round(total - P));
+  document.getElementById('rTotal').textContent = fmt(Math.round(total));
+}
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

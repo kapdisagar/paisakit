@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPF Calculator – Public Provident Fund Maturity & Yearly Table | PaisaKit</title>
+<meta name="description" content="Free PPF calculator: estimate your Public Provident Fund maturity after 15 years with yearly deposits, and see the year-by-year growth table.">
+<link rel="canonical" href="https://kapdisagar.github.io/paisakit/ppf-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"PPF Calculator","url":"https://kapdisagar.github.io/paisakit/ppf-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>PPF Calculator</h1>
+  <p class="sub">Public Provident Fund maturity estimate with a full year-by-year table. Assumes deposits at the start of each year (earns maximum interest).</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="deposit">Yearly deposit (₹)</label>
+      <input type="number" id="deposit" value="150000" min="500" max="150000" step="5000">
+      <div class="hint">Min ₹500, max ₹1,50,000 per financial year.</div>
+    </div>
+    <div class="field">
+      <label for="rate">Interest rate (% p.a.)</label>
+      <input type="number" id="rate" value="7.1" min="4" max="12" step="0.1">
+      <div class="hint">Current rate is announced quarterly by the government — verify before planning.</div>
+    </div>
+    <div class="field">
+      <label for="years">Tenure (years)</label>
+      <input type="number" id="years" value="15" min="15" max="30" step="1">
+      <div class="hint">PPF matures in 15 years; extendable in 5-year blocks (with or without contribution).</div>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">Total deposited</span><span class="value" id="rInv">₹0</span></div>
+    <div class="row"><span class="label">Total interest earned</span><span class="value" id="rInt">₹0</span></div>
+    <div class="row big"><span class="label">Maturity value</span><span class="value" id="rMat">₹0</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Year-by-year growth</h2>
+    <div style="overflow-x:auto">
+    <table class="yearly" id="tbl">
+      <thead><tr><th>Year</th><th>Deposit</th><th>Interest</th><th>Balance</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    </div>
+  </div>
+
+  <section class="info">
+    <h2>About PPF</h2>
+    <p>PPF is a government-backed savings scheme with EEE tax status: the deposit (up to ₹1.5L, Section 80C), the interest and the maturity amount are all tax-free. Deposits made before the 5th of the month earn interest for that month, and the balance compounds annually — which is why start-of-year deposits earn the most.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Can I extend PPF after 15 years?</summary><p>Yes, in blocks of 5 years. You choose to continue with fresh deposits (keeps earning like before) or without deposits (balance keeps earning interest, withdrawals allowed anytime).</p></details>
+    <details class="faq"><summary>How is PPF interest calculated?</summary><p>Interest accrues monthly on the lowest balance between the 5th and last day of the month, and is credited annually on 31 March. Depositing before the 5th maximises interest.</p></details>
+    <details class="faq"><summary>Is the rate fixed for 15 years?</summary><p>No — the government revises PPF rates every quarter, though historically changes are small. This calculator holds your assumed rate constant, so treat far-future years as estimates.</p></details>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:0}).format(n);
+function calc() {
+  const D = Math.min(150000, Math.max(0, +document.getElementById('deposit').value || 0));
+  const r = Math.max(0, +document.getElementById('rate').value || 0) / 100;
+  const Y = Math.min(30, Math.max(15, +document.getElementById('years').value || 15));
+  let bal = 0, invested = 0;
+  const tbody = document.querySelector('#tbl tbody');
+  tbody.innerHTML = '';
+  for (let y = 1; y <= Y; y++) {
+    const prev = bal;
+    bal = (bal + D) * (1 + r);
+    invested += D;
+    const interest = bal - prev - D;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>Year ${y}</td><td>${fmt(D)}</td><td>${fmt(Math.round(interest))}</td><td><strong>${fmt(Math.round(bal))}</strong></td>`;
+    tbody.appendChild(tr);
+  }
+  document.getElementById('rInv').textContent = fmt(invested);
+  document.getElementById('rInt').textContent = fmt(Math.round(bal - invested));
+  document.getElementById('rMat').textContent = fmt(Math.round(bal));
+}
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

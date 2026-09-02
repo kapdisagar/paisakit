@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GST Calculator – Add or Remove GST Online (5%, 12%, 18%, 28%) | PaisaKit</title>
+<meta name="description" content="Free GST calculator: add GST to a base price or remove GST from an inclusive price at 5%, 12%, 18% or 28%. Get CGST and SGST split instantly.">
+<link rel="canonical" href="https://kapdisagar.github.io/paisakit/gst-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"GST Calculator","url":"https://kapdisagar.github.io/paisakit/gst-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>GST Calculator</h1>
+  <p class="sub">Add GST to a base price, or extract GST from a GST-inclusive price.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="mode">Mode</label>
+      <select id="mode">
+        <option value="add">Add GST (base price → final price)</option>
+        <option value="remove">Remove GST (inclusive price → base)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="amount">Amount (₹)</label>
+      <input type="number" id="amount" value="10000" min="0" step="1">
+    </div>
+    <div class="field">
+      <label for="gstrate">GST rate</label>
+      <select id="gstrate">
+        <option value="0.25">0.25%</option>
+        <option value="3">3%</option>
+        <option value="5">5%</option>
+        <option value="12">12%</option>
+        <option value="18" selected>18%</option>
+        <option value="28">28%</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label" id="lBase">Base price (excl. GST)</span><span class="value" id="rBase">₹0</span></div>
+    <div class="row"><span class="label">GST amount</span><span class="value" id="rGst">₹0</span></div>
+    <div class="row"><span class="label">CGST (50%)</span><span class="value" id="rCgst">₹0</span></div>
+    <div class="row"><span class="label">SGST / UTGST (50%)</span><span class="value" id="rSgst">₹0</span></div>
+    <div class="row big"><span class="label" id="lTotal">Final price (incl. GST)</span><span class="value" id="rTotal">₹0</span></div>
+  </div>
+
+  <section class="info">
+    <h2>How GST math works</h2>
+    <p><strong>Adding GST:</strong> GST = base × rate ÷ 100, final = base + GST.</p>
+    <p><strong>Removing GST (reverse GST):</strong> base = inclusive price ÷ (1 + rate/100). The GST component is the difference.</p>
+    <div class="formula">base = price ÷ (1 + rate/100)</div>
+    <p>For intra-state sales the GST is split equally into CGST and SGST. For inter-state sales the full amount is IGST.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>How do I remove 18% GST from a bill?</summary><p>Divide the inclusive amount by 1.18. Example: ₹1,180 inclusive ÷ 1.18 = ₹1,000 base + ₹180 GST.</p></details>
+    <details class="faq"><summary>What are the current GST slabs?</summary><p>The main slabs are 0.25%, 3%, 5%, 12%, 18% and 28% plus cess on luxury/sin goods. Slab assignments change with GST Council decisions — always confirm on gst.gov.in for a specific product.</p></details>
+    <details class="faq"><summary>CGST, SGST, IGST — what's the difference?</summary><p>CGST + SGST apply within a state (split between Centre and State). IGST is the single tax on inter-state supplies, collected by the Centre.</p></details>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only — confirm tax treatment with a CA.</p>
+  </div>
+</footer>
+<script>
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:2}).format(n);
+function calc() {
+  const mode = document.getElementById('mode').value;
+  const amt = Math.max(0, +document.getElementById('amount').value || 0);
+  const rate = +document.getElementById('gstrate').value;
+  let base, gst, total;
+  if (mode === 'add') {
+    base = amt; gst = amt * rate / 100; total = amt + gst;
+    document.getElementById('lBase').textContent = 'Base price (excl. GST)';
+    document.getElementById('lTotal').textContent = 'Final price (incl. GST)';
+  } else {
+    total = amt; base = amt / (1 + rate / 100); gst = amt - base;
+    document.getElementById('lBase').textContent = 'Base price (before GST)';
+    document.getElementById('lTotal').textContent = 'Amount (incl. GST)';
+  }
+  document.getElementById('rBase').textContent = fmt(base);
+  document.getElementById('rGst').textContent = fmt(gst);
+  document.getElementById('rCgst').textContent = fmt(gst / 2);
+  document.getElementById('rSgst').textContent = fmt(gst / 2);
+  document.getElementById('rTotal').textContent = fmt(total);
+}
+document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

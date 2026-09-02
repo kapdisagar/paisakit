@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator – Exact Age in Years, Months & Days | PaisaKit</title>
+<meta name="description" content="Free age calculator: find your exact age in years, months and days from your date of birth. Also shows total days lived.">
+<link rel="canonical" href="https://kapdisagar.github.io/paisakit/age-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator","url":"https://kapdisagar.github.io/paisakit/age-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Age Calculator</h1>
+  <p class="sub">Exact age in years, months and days — from date of birth to any date.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="dob">Date of birth</label>
+      <input type="date" id="dob" value="1995-06-15">
+    </div>
+    <div class="field">
+      <label for="asof">Age as of</label>
+      <input type="date" id="asof">
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row big"><span class="label">Your age</span><span class="value" id="rAge">—</span></div>
+    <div class="row"><span class="label">Total months lived</span><span class="value" id="rMonths">—</span></div>
+    <div class="row"><span class="label">Total days lived</span><span class="value" id="rDays">—</span></div>
+    <div class="row"><span class="label">Next birthday in</span><span class="value" id="rNext">—</span></div>
+  </div>
+
+  <section class="info">
+    <h2>How age is counted</h2>
+    <p>The conventional method: count full years completed, then full months since the last birthday, then remaining days. This matches how documents, exams and forms in India count age.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Why do months have different lengths in the result?</summary><p>Months are counted calendar-wise (e.g. 15 Jan → 15 Feb = 1 month), not as fixed 30-day blocks. That's why day counts can vary between two people of the "same age".</p></details>
+    <details class="faq"><summary>How does India count age for exams and documents?</summary><p>Most government forms use completed years as on a cut-off date. Some (like NEET's minimum age) specify exact dates — always check the specific notification.</p></details>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Runs entirely in your browser.</p>
+  </div>
+</footer>
+<script>
+function pad(n) { return n; }
+function diff(d1, d2) {
+  // d1 <= d2
+  let y = d2.getFullYear() - d1.getFullYear();
+  let m = d2.getMonth() - d1.getMonth();
+  let d = d2.getDate() - d1.getDate();
+  if (d < 0) {
+    m--;
+    d += new Date(d2.getFullYear(), d2.getMonth(), 0).getDate();
+  }
+  if (m < 0) { y--; m += 12; }
+  return { y, m, d };
+}
+function calc() {
+  const dobV = document.getElementById('dob').value;
+  const asofV = document.getElementById('asof').value;
+  if (!dobV || !asofV) return;
+  const dob = new Date(dobV + 'T00:00:00');
+  const asof = new Date(asofV + 'T00:00:00');
+  if (asof < dob) {
+    document.getElementById('rAge').textContent = '—';
+    return;
+  }
+  const a = diff(dob, asof);
+  document.getElementById('rAge').textContent = `${a.y} years, ${a.m} months, ${a.d} days`;
+  const totalDays = Math.floor((asof - dob) / 86400000);
+  document.getElementById('rDays').textContent = totalDays.toLocaleString('en-IN');
+  document.getElementById('rMonths').textContent = (a.y * 12 + a.m).toLocaleString('en-IN');
+  let nb = new Date(asof.getFullYear(), dob.getMonth(), dob.getDate());
+  if (nb <= asof) nb = new Date(asof.getFullYear() + 1, dob.getMonth(), dob.getDate());
+  const daysLeft = Math.ceil((nb - asof) / 86400000);
+  document.getElementById('rNext').textContent = daysLeft + (daysLeft === 1 ? ' day 🎉' : ' days');
+}
+const today = new Date();
+document.getElementById('asof').value = today.toISOString().slice(0, 10);
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

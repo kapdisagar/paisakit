@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kapdisagar.github.io/paisakit/sitemap.xml

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP Calculator with Step-Up – Calculate SIP Returns Online | PaisaKit</title>
+<meta name="description" content="Free SIP calculator: estimate mutual fund SIP returns with optional yearly step-up. See invested amount, estimated gains and maturity value instantly.">
+<link rel="canonical" href="https://kapdisagar.github.io/paisakit/sip-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"SIP Calculator","url":"https://kapdisagar.github.io/paisakit/sip-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>SIP Calculator</h1>
+  <p class="sub">Estimate the future value of a monthly SIP in mutual funds, with an optional yearly step-up.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="amount">Monthly investment (₹)</label>
+      <input type="number" id="amount" value="5000" min="500" step="500">
+    </div>
+    <div class="field">
+      <label for="rate">Expected annual return (%)</label>
+      <input type="number" id="rate" value="12" min="1" max="30" step="0.5">
+      <div class="hint">Equity funds have historically delivered ~10–14%, but returns are never guaranteed.</div>
+    </div>
+    <div class="field">
+      <label for="years">Investment period (years)</label>
+      <input type="number" id="years" value="10" min="1" max="40" step="1">
+    </div>
+    <div class="field">
+      <label for="stepup">Yearly step-up (%)</label>
+      <input type="number" id="stepup" value="0" min="0" max="50" step="1">
+      <div class="hint">Increase your SIP by this % every year (e.g. 10 = invest 10% more each year).</div>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">Total invested</span><span class="value" id="rInvested">₹0</span></div>
+    <div class="row"><span class="label">Estimated returns</span><span class="value" id="rGain">₹0</span></div>
+    <div class="row big"><span class="label">Maturity value</span><span class="value" id="rTotal">₹0</span></div>
+  </div>
+
+  <section class="info">
+    <h2>How the SIP calculation works</h2>
+    <p>Every month your instalment is added and the whole balance grows at the monthly rate (annual rate ÷ 12). With a step-up, the instalment is increased once every 12 months:</p>
+    <div class="formula">balance = (balance + monthly SIP) × (1 + r/1200), every month</div>
+    <p>This is the standard future-value-of-annuity method used by most SIP calculators. Actual mutual fund returns vary month to month — treat this as a planning estimate, not a promise.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>What is a good return % to assume?</summary><p>For long-term equity index funds, 10–12% is a common planning assumption. Debt funds typically deliver 6–8%. Never assume returns your fund category has not historically delivered.</p></details>
+    <details class="faq"><summary>What is a step-up SIP?</summary><p>A step-up (or top-up) SIP increases your monthly instalment by a fixed percentage every year — usually matched to your salary growth. Even a 10% yearly step-up can roughly double your final corpus over 15+ years.</p></details>
+    <details class="faq"><summary>Are SIP returns guaranteed?</summary><p>No. SIPs invest in market-linked mutual funds. The calculator compounds a flat assumed rate; real returns fluctuate with markets.</p></details>
+    <details class="faq"><summary>Is my data sent anywhere?</summary><p>No. All math runs in your browser. Nothing is uploaded or stored.</p></details>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:0}).format(n);
+function calc() {
+  const P = Math.max(0, +document.getElementById('amount').value || 0);
+  const rate = Math.max(0, +document.getElementById('rate').value || 0);
+  const years = Math.min(40, Math.max(1, +document.getElementById('years').value || 1));
+  const step = Math.max(0, +document.getElementById('stepup').value || 0);
+  const i = rate / 1200;
+  const n = years * 12;
+  let bal = 0, invested = 0, monthly = P;
+  for (let m = 1; m <= n; m++) {
+    if (m > 1 && (m - 1) % 12 === 0) monthly *= (1 + step / 100);
+    bal = (bal + monthly) * (1 + i);
+    invested += monthly;
+  }
+  document.getElementById('rInvested').textContent = fmt(Math.round(invested));
+  document.getElementById('rGain').textContent = fmt(Math.round(bal - invested));
+  document.getElementById('rTotal').textContent = fmt(Math.round(bal));
+}
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>
