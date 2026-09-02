@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kapdisagar.github.io/paisakit/sitemap.xml
+Sitemap: https://tools.thenexmall.com/sitemap.xml
