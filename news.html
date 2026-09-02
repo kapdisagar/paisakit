@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance News India – Live Business & Market Headlines | PaisaKit</title>
+<meta name="description" content="Live India finance news in English and Hindi: stock market, economy, tax and business headlines, updated throughout the day. Free, no sign-up.">
+<link rel="canonical" href="https://tools.thenexmall.com/news.html">
+<meta property="og:title" content="Finance News India – Live Business Headlines | PaisaKit">
+<meta property="og:description" content="India business and market headlines, live from Google News. English + Hindi.">
+<link rel="stylesheet" href="style.css">
+<style>
+.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.tabs button {
+  flex: 1; padding: 10px 12px; border: 1px solid var(--border); border-radius: 9px;
+  background: var(--card); color: var(--muted); font-weight: 700; font-size: 0.95rem; cursor: pointer;
+}
+.tabs button.active { background: var(--green); border-color: var(--green); color: #fff; }
+ul.news-list { list-style: none; }
+ul.news-list li { padding: 12px 0; border-bottom: 1px dashed var(--border); }
+ul.news-list li:last-child { border-bottom: none; }
+ul.news-list a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.96rem; line-height: 1.45; }
+ul.news-list a:hover { color: var(--green); }
+ul.news-list .meta { color: var(--muted); font-size: 0.78rem; margin-top: 3px; }
+.statusline { color: var(--muted); font-size: 0.8rem; margin: 0 0 12px; }
+.retry {
+  display: inline-block; margin-top: 10px; padding: 9px 16px; border: 1px solid var(--green);
+  border-radius: 9px; background: var(--green); color: #fff; font-weight: 700; cursor: pointer; font-size: 0.9rem;
+}
+.mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+@media (max-width: 560px) { .mini-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="about.html">About</a></nav>
+  </div>
+</header>
+<main class="container">
+  <div class="hero">
+    <span class="badge">LIVE · HAR 15 MIN UPDATE</span>
+    <h1>Aaj ka Finance News</h1>
+    <p class="sub">India ke business, market aur economy headlines — Google News se live. English aur Hindi dono me. Headline padho, niche wale tools se turant plan banao.</p>
+  </div>
+
+  <div class="card">
+    <div class="tabs">
+      <button id="tab-en" class="active" type="button">🇮🇳 English</button>
+      <button id="tab-hi" type="button">हिंदी</button>
+    </div>
+    <p class="statusline" id="status">Loading…</p>
+    <ul class="news-list" id="list"></ul>
+    <p class="note">Headlines Google News ke through aati hain — poori story original publisher ke paas hai, hum sirf link dete hain. Fetch ek public relay (rss2json) se hota hai; aapka koi personal data nahi jata. Rates upar wale refresh me hi rehte hain, news apne aap update hoti hai.</p>
+  </div>
+
+  <section class="info">
+    <h2>News padho, plan banao 📊</h2>
+    <div class="mini-grid">
+      <a class="tool-card" href="sip-calculator.html"><div class="emoji">📈</div><div class="name">SIP Calculator</div><div class="desc">Market news ke baad SIP plan karo.</div></a>
+      <a class="tool-card" href="emi-calculator.html"><div class="emoji">🏦</div><div class="name">EMI Calculator</div><div class="desc">Interest rate news ka EMI pe asar dekho.</div></a>
+      <a class="tool-card" href="gst-calculator.html"><div class="emoji">🧾</div><div class="name">GST Calculator</div><div class="desc">GST rule news ke saath instant check.</div></a>
+      <a class="tool-card" href="fd-calculator.html"><div class="emoji">💰</div><div class="name">FD Calculator</div><div class="desc">Rate cut/hike ka FD return dekho.</div></a>
+    </div>
+  </section>
+
+  <section class="info">
+    <h2>FAQs</h2>
+    <details class="faq"><summary>News kahan se aati hai?</summary><p>Headlines Google News ki India Business feed se aati hain — English aur Hindi alag-alag tabs me. PaisaKit khud news likhta nahi; hum reliable sources ke headlines ek jagah laate hain.</p></details>
+    <details class="faq"><summary>Kitni baar update hota hai?</summary><p>Page khole to latest list aati hai. Browser me 15 minute tak cache rehta hai, uske baad dobara fresh load hota hai — taaki fast bhi lage aur fresh bhi rahe.</p></details>
+    <details class="faq"><summary>Kya iske liye sign-up chahiye?</summary><p>Nahi. Jaise PaisaKit ke saare tools — koi login nahi, koi payment nahi, sab kuch browser me hi chalta hai.</p></details>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links">
+      <a href="index.html">All Tools</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <p>© 2026 PaisaKit · Headlines are property of their publishers. Nothing here is financial advice.</p>
+  </div>
+</footer>
+<script>
+(function () {
+  var FEEDS = {
+    en: "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent("https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en"),
+    hi: "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent("https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=hi&gl=IN&ceid=IN:hi")
+  };
+  var TTL = 15 * 60 * 1000;
+  var listEl = document.getElementById("list");
+  var statusEl = document.getElementById("status");
+  var current = "en";
+
+  function timeAgo(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    var s = Math.floor((Date.now() - d.getTime()) / 1000);
+    if (isNaN(s) || s < 0) return "";
+    if (s < 3600) return Math.max(1, Math.floor(s / 60)) + " min ago";
+    if (s < 86400) return Math.floor(s / 3600) + " hr ago";
+    return Math.floor(s / 86400) + " din ago";
+  }
+
+  function readCache(key) {
+    try { return JSON.parse(localStorage.getItem("paisakit_news_" + key)); } catch (e) { return null; }
+  }
+  function writeCache(key, data) {
+    try { localStorage.setItem("paisakit_news_" + key, JSON.stringify(data)); } catch (e) {}
+  }
+
+  function renderItems(items) {
+    listEl.textContent = "";
+    items.forEach(function (it) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = it.link || "#";
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = it.title || "(untitled)";
+      var meta = document.createElement("div");
+      meta.className = "meta";
+      var src = it.author || "";
+      var t = timeAgo(it.pubDate);
+      meta.textContent = [src, t].filter(Boolean).join(" · ");
+      li.appendChild(a);
+      li.appendChild(meta);
+      listEl.appendChild(li);
+    });
+  }
+
+  function showLoading() {
+    listEl.textContent = "";
+    statusEl.textContent = "Loading latest headlines…";
+  }
+
+  function showError(msg, staleItems) {
+    statusEl.textContent = msg;
+    if (staleItems && staleItems.length) { renderItems(staleItems); }
+    var btn = document.createElement("button");
+    btn.className = "retry";
+    btn.type = "button";
+    btn.textContent = "Dobara try karo";
+    btn.addEventListener("click", function () { load(current, true); });
+    listEl.insertBefore(btn, listEl.firstChild);
+  }
+
+  function load(lang, force) {
+    current = lang;
+    showLoading();
+    var cached = readCache(lang);
+    if (cached && cached.ts && cached.items && !force && (Date.now() - cached.ts) < TTL) {
+      renderItems(cached.items);
+      statusEl.textContent = "Latest headlines · " + new Date(cached.ts).toLocaleTimeString("en-IN") + " (cached)";
+      return;
+    }
+    fetch(FEEDS[lang]).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j || j.status !== "ok" || !j.items || !j.items.length) throw new Error("feed empty");
+      var items = j.items.slice(0, 12).map(function (it) {
+        return { title: it.title, link: it.link, author: it.author, pubDate: it.pubDate };
+      });
+      writeCache(lang, { ts: Date.now(), items: items });
+      renderItems(items);
+      statusEl.textContent = "Latest headlines · " + new Date().toLocaleTimeString("en-IN");
+    }).catch(function () {
+      var stale = cached && cached.items;
+      showError("News load nahi hui (network ya relay issue).", stale);
+    });
+  }
+
+  var tabEn = document.getElementById("tab-en");
+  var tabHi = document.getElementById("tab-hi");
+  tabEn.addEventListener("click", function () {
+    tabEn.className = "active"; tabHi.className = ""; load("en");
+  });
+  tabHi.addEventListener("click", function () {
+    tabHi.className = "active"; tabEn.className = ""; load("hi");
+  });
+  load("en");
+})();
+</script>
+</body>
+</html>
