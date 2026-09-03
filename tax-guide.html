@@ -18,6 +18,7 @@
   text-decoration: none; margin-top: 12px; border: 1px solid var(--green-dark);
 }
 .buy-btn:hover { background: var(--green-dark); }
+button.buy-btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
 .checklist { list-style: none; }
 .checklist li { padding: 7px 0 7px 28px; position: relative; font-size: 0.95rem; }
 .checklist li::before { content: "✅"; position: absolute; left: 0; }
@@ -61,8 +62,11 @@
     </ul>
     <div style="text-align:center; margin-top:14px;">
       <span class="strike">₹199</span><span class="price">₹99</span>
-      <a class="buy-btn" href="https://rzp.io/rzp/hBwVZnB" target="_blank" rel="noopener noreferrer">Buy Now — ₹99 (Secure Razorpay)</a>
-      <p class="note">Payment ke baad PDF aapke WhatsApp/Email par 24 ghante ke andar milega. Secure payment Razorpay (India ka trusted gateway) ke through — cards, UPI, netbanking sab chalega.</p>
+      <div id="buyArea">
+        <button class="buy-btn" type="button" onclick="buyGuide()">Buy Now — ₹99 (UPI / QR / Card)</button>
+        <p class="note">Click karo → payment screen khulega → <strong>UPI me QR code scan</strong> karke ya GPay/PhonePe/Paytm se turant pay karo. Payment ke baad PDF aapke WhatsApp/Email par 24 ghante me milega. Secure payment Razorpay se — cards, UPI, netbanking sab chalega.</p>
+        <noscript><a href="https://rzp.io/rzp/hBwVZnB" target="_blank" rel="noopener noreferrer">Buy Now — ₹99 (Razorpay)</a></noscript>
+      </div>
     </div>
   </div>
 
@@ -98,5 +102,28 @@
     <p>© 2026 PaisaKit · Guide is educational only, not financial advice.</p>
   </div>
 </footer>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+function buyGuide() {
+  var rzp = new Razorpay({
+    key: "rzp_live_TXDTBYtLsyCsAw",
+    amount: 9900,
+    currency: "INR",
+    name: "PaisaKit",
+    description: "Income Tax Saving Guide FY 2026-27 (PDF)",
+    notes: { product: "tax-guide-fy2026-27" },
+    theme: { color: "#0e7c4a" },
+    handler: function (r) {
+      document.getElementById("buyArea").innerHTML =
+        '<div class="results card" style="margin:0;"><h2>✅ Payment received!</h2>' +
+        '<div class="row"><span class="label">Payment ID</span><span class="value">' + r.razorpay_payment_id + '</span></div>' +
+        '<div class="row"><span class="label">Delivery</span><span class="value">PDF — 24 ghante me</span></div></div>' +
+        '<p class="note">Screenshot le lo is page ka. PDF aapke WhatsApp/Email par 24 ghante ke andar aayega.</p>';
+    },
+    modal: { ondismiss: function () {} }
+  });
+  rzp.open();
+}
+</script>
 </body>
 </html>
