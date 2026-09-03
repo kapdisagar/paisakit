@@ -7,6 +7,8 @@
   <url><loc>https://tools.thenexmall.com/fd-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://tools.thenexmall.com/ppf-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://tools.thenexmall.com/age-calculator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.thenexmall.com/currency-converter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tools.thenexmall.com/ifsc-finder.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://tools.thenexmall.com/news.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://tools.thenexmall.com/about.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://tools.thenexmall.com/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

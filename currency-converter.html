@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Converter – Live INR Exchange Rates, 160+ Currencies | PaisaKit</title>
+<meta name="description" content="Free currency converter for India: convert INR to USD, EUR, GBP, AED, SAR and 160+ currencies with daily mid-market rates. Fast, private, no sign-up.">
+<link rel="canonical" href="https://tools.thenexmall.com/currency-converter.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Currency Converter","url":"https://tools.thenexmall.com/currency-converter.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>
+.swapbtn{margin:2px 0 0;padding:8px 14px;border:1px solid var(--border);background:var(--card);border-radius:9px;font-size:.9rem;cursor:pointer;color:var(--green-dark);font-weight:600}
+.swapbtn:hover{border-color:var(--green)}
+.errbox{display:none;background:#fdf1f1;border:1px solid #eccccc;color:#8a2f2f;border-radius:10px;padding:12px 14px;font-size:.9rem;margin-bottom:14px}
+.retry{display:none;margin-bottom:16px;padding:9px 16px;border:1px solid var(--green);background:var(--green);color:#fff;border-radius:9px;font-size:.92rem;cursor:pointer;font-weight:600}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Currency Converter</h1>
+  <p class="sub">Live mid-market exchange rates for 160+ currencies — INR to USD, EUR, GBP, AED, SAR aur bhi. Rates update daily.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" value="1000" min="0" step="any">
+    </div>
+    <div class="field">
+      <label for="from">From</label>
+      <select id="from"></select>
+    </div>
+    <div class="field">
+      <label for="to">To</label>
+      <select id="to"></select>
+    </div>
+    <button class="swapbtn" id="swap" type="button">⇅ Swap currencies</button>
+  </div>
+
+  <div class="card results">
+    <div class="row big"><span class="label" id="rLabel">Converted amount</span><span class="value" id="rAmt">…</span></div>
+    <p class="note" id="rLine">Loading live rates…</p>
+    <p class="note" id="rStamp">Mid-market rates via open.er-api.com · updated —</p>
+  </div>
+
+  <div class="errbox" id="err">Rates load nahi hue — apna internet check karein ya thodi der baad retry karein. Aapke browser mein koi cached rates nahi hain.</div>
+  <button class="retry" id="retry" type="button">↻ Retry</button>
+
+  <section class="info">
+    <h2>How the conversion is calculated</h2>
+    <p>Rates are quoted against the US Dollar, so any two currencies are converted via a cross-rate:</p>
+    <div class="formula">Result = Amount × Rate(to) ÷ Rate(from)</div>
+    <p>Example: ₹1,000 → EUR, when 1 USD = 94.89 INR and 1 USD = 0.8633 EUR. So 1,000 × 0.8633 ÷ 94.89 ≈ <b>€9.10</b>.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Which exchange rate is used?</summary><p>The mid-market rate — the midpoint between what global buyers and sellers pay — from open.er-api.com, updated once daily. It is the "fair" reference rate, not a quote anyone will actually give you.</p></details>
+    <details class="faq"><summary>Will my bank give me this exact rate?</summary><p>No. Banks, forex cards and remittance services typically add a 1–3% margin plus fees on top of the mid-market rate. Use this as a fair benchmark — if a service is quoting you far below it, you're overpaying.</p></details>
+    <details class="faq"><summary>How fresh are the rates?</summary><p>The source updates once per day. Your browser caches the rates locally for 12 hours so the page loads instantly and saves data; a fresh copy is fetched after that.</p></details>
+    <details class="faq"><summary>Do you store my searches or data?</summary><p>No. Every conversion happens in your browser. Only the rate table itself is cached locally on your device — nothing is ever uploaded to us.</p></details>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Rates are indicative mid-market values, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const POPULAR = ['INR','USD','EUR','GBP','AED','SAR','AUD','CAD','SGD','JPY','CNY','CHF','HKD','NZD','MYR','THB','QAR','KWD','BHD','OMR','KRW','ZAR','BRL','RUB','TRY','IDR','PHP','PKR','BDT','NPR','LKR','VND'];
+const NAMES = {INR:'Indian Rupee',USD:'US Dollar',EUR:'Euro',GBP:'British Pound',AED:'UAE Dirham',SAR:'Saudi Riyal',AUD:'Australian Dollar',CAD:'Canadian Dollar',SGD:'Singapore Dollar',JPY:'Japanese Yen',CNY:'Chinese Yuan',CHF:'Swiss Franc',HKD:'Hong Kong Dollar',NZD:'New Zealand Dollar',MYR:'Malaysian Ringgit',THB:'Thai Baht',QAR:'Qatari Riyal',KWD:'Kuwaiti Dinar',BHD:'Bahraini Dinar',OMR:'Omani Rial',KRW:'South Korean Won',ZAR:'South African Rand',BRL:'Brazilian Real',RUB:'Russian Ruble',TRY:'Turkish Lira',IDR:'Indonesian Rupiah',PHP:'Philippine Peso',PKR:'Pakistani Rupee',BDT:'Bangladeshi Taka',NPR:'Nepalese Rupee',LKR:'Sri Lankan Rupee',VND:'Vietnamese Dong'};
+const KEY = 'pk_fx_v1', TTL = 12*60*60*1000;
+let RATES = null, UPD = '';
+const $ = id => document.getElementById(id);
+
+function fillSelects() {
+  const f = $('from'), t = $('to');
+  const pf = f.value || 'INR', pt = t.value || 'USD';
+  const list = POPULAR.slice();
+  if (RATES) Object.keys(RATES).forEach(c => { if (!list.includes(c)) list.push(c); });
+  const opts = list.map(c => '<option value="' + c + '">' + c + (NAMES[c] ? ' — ' + NAMES[c] : '') + '</option>').join('');
+  f.innerHTML = opts; t.innerHTML = opts;
+  f.value = list.includes(pf) ? pf : 'INR';
+  t.value = list.includes(pt) ? pt : 'USD';
+}
+function fmtRate(n) {
+  if (!isFinite(n)) return '—';
+  return n >= 1 ? n.toLocaleString('en-IN', {maximumFractionDigits: 4}) : n.toPrecision(5).replace(/0+$/, '').replace(/\.$/, '');
+}
+function convert() {
+  if (!RATES) return;
+  const amt = Math.max(0, +$('amount').value || 0);
+  const from = $('from').value, to = $('to').value;
+  const rf = RATES[from], rt = RATES[to];
+  if (!rf || !rt) return;
+  const out = amt * rt / rf;
+  $('rLabel').textContent = new Intl.NumberFormat('en-IN', {maximumFractionDigits: 2}).format(amt) + ' ' + from + ' =';
+  $('rAmt').textContent = new Intl.NumberFormat('en-IN', {style: 'currency', currency: to}).format(out);
+  $('rLine').textContent = '1 ' + from + ' = ' + fmtRate(rt / rf) + ' ' + to + '  ·  1 ' + to + ' = ' + fmtRate(rf / rt) + ' ' + from;
+  $('rStamp').textContent = 'Mid-market rates via open.er-api.com' + (UPD ? ' · updated ' + UPD : '');
+}
+function apply(c) { RATES = c.rates; UPD = c.updated || ''; fillSelects(); convert(); }
+async function load() {
+  $('err').style.display = 'none'; $('retry').style.display = 'none';
+  let cache = null;
+  try { cache = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+  if (cache && cache.rates && Date.now() - cache.ts < TTL) { apply(cache); return; }
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/USD');
+    const j = await res.json();
+    if (!j || j.result !== 'success' || !j.rates || !j.rates.INR) throw new Error('bad payload');
+    const c = {ts: Date.now(), rates: j.rates, updated: (j.time_last_update_utc || '').replace(/^[A-Za-z]{3}, /, '').replace(/\s*\+0000$/, '')};
+    try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {}
+    apply(c);
+  } catch (e) {
+    if (cache && cache.rates) {
+      apply(cache);
+      $('rStamp').textContent = '⚠ Live update failed — showing cached rates from ' + new Date(cache.ts).toLocaleString('en-IN');
+      $('retry').style.display = 'inline-block';
+    } else {
+      $('err').style.display = 'block'; $('retry').style.display = 'inline-block';
+      $('rLine').textContent = 'Rates unavailable right now.';
+    }
+  }
+}
+$('swap').addEventListener('click', () => { const f = $('from'), t = $('to'); const v = f.value; f.value = t.value; t.value = v; convert(); });
+['amount','from','to'].forEach(id => { $(id).addEventListener('input', convert); $(id).addEventListener('change', convert); });
+$('retry').addEventListener('click', load);
+fillSelects();
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFSC Code Finder – Bank, Branch, Address & MICR by IFSC | PaisaKit</title>
+<meta name="description" content="Free IFSC code finder: enter any 11-character IFSC to instantly get bank name, branch, address, city, state, MICR and NEFT/RTGS/IMPS/UPI support.">
+<link rel="canonical" href="https://tools.thenexmall.com/ifsc-finder.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"IFSC Code Finder","url":"https://tools.thenexmall.com/ifsc-finder.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>
+.errbox{display:none;background:#fdf1f1;border:1px solid #eccccc;color:#8a2f2f;border-radius:10px;padding:12px 14px;font-size:.9rem;margin-bottom:14px}
+.retry{display:none;margin-bottom:16px;padding:9px 16px;border:1px solid var(--green);background:var(--green);color:#fff;border-radius:9px;font-size:.92rem;cursor:pointer;font-weight:600}
+.findbtn{width:100%;padding:11px;border:1px solid var(--green);background:var(--green);color:#fff;border-radius:9px;font-size:1rem;cursor:pointer;font-weight:700;margin-top:2px}
+.findbtn:hover{background:var(--green-dark)}
+.tag{display:inline-block;background:var(--accent-bg);color:var(--green-dark);border-radius:99px;font-size:.75rem;font-weight:700;padding:2px 10px;margin:2px 6px 2px 0}
+.tag.no{background:#f2f2f2;color:#9a9a9a}
+.kv{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--border);font-size:.93rem}
+.kv:last-child{border-bottom:none}
+.kv .k{width:104px;flex-shrink:0;color:var(--muted)}
+.kv .v{font-weight:600;word-break:break-word}
+.chip{background:var(--card);border:1px solid var(--border);border-radius:99px;padding:4px 12px;font-size:.82rem;cursor:pointer;color:var(--muted);font-family:ui-monospace,Consolas,monospace;margin:4px 6px 0 0}
+.chip:hover{border-color:var(--green);color:var(--green-dark)}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>IFSC Code Finder</h1>
+  <p class="sub">Kisi bhi 11-character IFSC code se bank, branch, address aur payment support turant jaanein.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="ifsc">IFSC Code</label>
+      <input type="text" id="ifsc" value="HDFC0000001" maxlength="11" placeholder="e.g. HDFC0000001" autocomplete="off" spellcheck="false" style="text-transform:uppercase;font-family:ui-monospace,Consolas,monospace;letter-spacing:.06em">
+      <div class="hint">Format: 4 letters + 0 + 6 characters. Cheque leaf ya passbook pe milta hai.</div>
+    </div>
+    <button class="findbtn" id="go" type="button">Find Branch</button>
+    <div id="recentwrap" style="display:none;margin-top:12px">
+      <span class="hint">Recent lookups:</span>
+      <div id="recent"></div>
+    </div>
+  </div>
+
+  <div class="errbox" id="err"></div>
+  <button class="retry" id="retry" type="button">↻ Retry</button>
+
+  <div class="card results" id="res" style="display:none">
+    <div class="row big"><span class="label">Bank</span><span class="value" id="rBank">—</span></div>
+    <div class="kv"><span class="k">Branch</span><span class="v" id="rBranch">—</span></div>
+    <div class="kv"><span class="k">Address</span><span class="v" id="rAddr">—</span></div>
+    <div class="kv"><span class="k">City</span><span class="v" id="rCity">—</span></div>
+    <div class="kv"><span class="k">District</span><span class="v" id="rDist">—</span></div>
+    <div class="kv"><span class="k">State</span><span class="v" id="rState">—</span></div>
+    <div class="kv"><span class="k">Contact</span><span class="v" id="rContact">—</span></div>
+    <div class="kv"><span class="k">MICR</span><span class="v" id="rMicr">—</span></div>
+    <div class="kv"><span class="k">Supports</span><span class="v" id="rTags"></span></div>
+  </div>
+
+  <section class="info">
+    <h2>How an IFSC code is structured</h2>
+    <p>Every IFSC code has three fixed parts, assigned by the Reserve Bank of India:</p>
+    <div class="formula">IFSC = BANK (4 letters) + 0 + BRANCH (6 characters)<br>HDFC 0 000001 → HDFC Bank, branch code 000001</div>
+    <p>The first 4 letters identify the bank (same for every branch), the 5th character is always <b>0</b> (reserved by RBI for future use), and the last 6 characters identify the exact branch.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>What is an IFSC code?</summary><p>Indian Financial System Code — an 11-character code the RBI assigns to every bank branch. It uniquely identifies the branch in electronic payments like NEFT, RTGS and IMPS.</p></details>
+    <details class="faq"><summary>Where do I find my IFSC?</summary><p>On every cheque leaf (top-left corner, next to the cheque number), on your passbook's first page, and in your bank's website or app. Example format: HDFC0000001.</p></details>
+    <details class="faq"><summary>Is the IFSC the same for all branches of a bank?</summary><p>No. The first 4 letters are the same for every branch of a bank, but the last 6 characters are unique to each branch. Always use the exact branch's code for NEFT/RTGS.</p></details>
+    <details class="faq"><summary>Do I need an IFSC for UPI?</summary><p>Not usually — UPI works with UPI IDs and mobile numbers. You only need the IFSC when adding a payee through the account number + IFSC route, or for NEFT/RTGS/IMPS bank transfers.</p></details>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Data from a public IFSC directory, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const $ = id => document.getElementById(id);
+const PATTERN = /^[A-Z]{4}0[A-Z0-9]{6}$/;
+
+function show(d) {
+  $('rBank').textContent = d.BANK || '—';
+  $('rBranch').textContent = d.BRANCH || '—';
+  $('rAddr').textContent = d.ADDRESS || '—';
+  $('rCity').textContent = d.CITY || '—';
+  $('rDist').textContent = d.DISTRICT || '—';
+  $('rState').textContent = d.STATE || '—';
+  $('rContact').textContent = d.CONTACT || '—';
+  $('rMicr').textContent = d.MICR || '—';
+  $('rTags').innerHTML = ['UPI','NEFT','IMPS','RTGS'].map(k =>
+    '<span class="tag' + (d[k] === false ? ' no' : '') + '">' + k + ' ' + (d[k] === false ? '✗' : '✓') + '</span>').join('');
+  $('res').style.display = 'block';
+}
+function recent() { try { return JSON.parse(localStorage.getItem('pk_ifsc_recent') || '[]'); } catch (e) { return []; } }
+function renderRecent() {
+  const r = recent();
+  $('recentwrap').style.display = r.length ? 'block' : 'none';
+  $('recent').innerHTML = r.map(c => '<button class="chip" type="button" data-code="' + c + '">' + c + '</button>').join('');
+}
+function saveRecent(code) {
+  const r = [code].concat(recent().filter(c => c !== code)).slice(0, 5);
+  try { localStorage.setItem('pk_ifsc_recent', JSON.stringify(r)); } catch (e) {}
+  renderRecent();
+}
+async function lookup(manual) {
+  const code = $('ifsc').value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+  $('ifsc').value = code;
+  $('err').style.display = 'none'; $('retry').style.display = 'none';
+  if (!PATTERN.test(code)) {
+    if (manual) $('err').textContent = 'IFSC code galat lag raha hai — 11 characters hone chahiye: 4 letters + 0 + 6 characters (e.g. HDFC0000001).';
+    $('err').style.display = manual ? 'block' : 'none';
+    return;
+  }
+  const key = 'pk_ifsc:' + code;
+  let cache = null;
+  try { cache = JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) {}
+  if (cache && cache.d) { show(cache.d); saveRecent(code); return; }
+  $('res').style.display = 'none';
+  try {
+    const res = await fetch('https://ifsc.razorpay.com/' + code);
+    if (res.status === 404) {
+      $('err').textContent = 'Koi bank nahi mila code "' + code + '" ke liye. Spelling aur 11 characters dobara check karein.';
+      $('err').style.display = 'block'; return;
+    }
+    const d = await res.json();
+    if (!d || !d.BANK) throw new Error('bad payload');
+    try { localStorage.setItem(key, JSON.stringify({ts: Date.now(), d: d})); } catch (e) {}
+    show(d); saveRecent(code);
+  } catch (e) {
+    if (cache && cache.d) { show(cache.d); saveRecent(code); return; }
+    $('err').textContent = 'Lookup fail hua — internet connection check karein ya thodi der mein retry karein.';
+    $('err').style.display = 'block'; $('retry').style.display = 'inline-block';
+  }
+}
+$('go').addEventListener('click', () => lookup(true));
+$('ifsc').addEventListener('keydown', e => { if (e.key === 'Enter') lookup(true); });
+let deb;
+$('ifsc').addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => lookup(false), 400); });
+$('retry').addEventListener('click', () => lookup(true));
+$('recent').addEventListener('click', e => {
+  const b = e.target.closest('.chip');
+  if (b) { $('ifsc').value = b.getAttribute('data-code'); lookup(true); }
+});
+renderRecent();
+lookup(false);
+</script>
+</body>
+</html>
