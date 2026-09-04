@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator — Body Mass Index & Healthy Weight Range | PaisaKit</title>
+<meta name="description" content="Free BMI calculator: check your body mass index in seconds. WHO categories plus Asian-Indian guidelines and your healthy weight range. Information only, not medical advice.">
+<link rel="canonical" href="https://tools.thenexmall.com/bmi-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"BMI Calculator","url":"https://tools.thenexmall.com/bmi-calculator.html","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>
+.mednote{background:#fdf6ec;border:1px solid #ead9bd;color:#7a5b1f;padding:10px 14px;border-radius:10px;font-size:.88rem;margin-bottom:20px}
+.hrow{display:flex;gap:10px}
+.hrow .field{flex:1}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>BMI Calculator</h1>
+  <p class="sub">Height aur weight se Body Mass Index nikalein — WHO categories ke saath, plus Asian-Indian guidelines jo India ke liye zyada relevant hain.</p>
+  <p class="mednote">⚠️ Yeh tool <b>information-only</b> hai — medical advice nahi. Kisi bhi health decision se pehle doctor se consult karein.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="unit">Height unit</label>
+      <select id="unit">
+        <option value="ft" selected>Feet + Inches</option>
+        <option value="cm">Centimetres</option>
+      </select>
+    </div>
+    <div id="grpFt" class="hrow">
+      <div class="field">
+        <label for="hft">Feet</label>
+        <input type="number" id="hft" value="5" min="1" max="8" step="1">
+      </div>
+      <div class="field">
+        <label for="hin">Inches</label>
+        <input type="number" id="hin" value="7" min="0" max="11" step="1">
+      </div>
+    </div>
+    <div id="grpCm" class="field" style="display:none">
+      <label for="hcm">Height (cm)</label>
+      <input type="number" id="hcm" value="170" min="50" max="250" step="0.5">
+    </div>
+    <div class="field">
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" value="65" min="10" max="300" step="0.5">
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row big"><span class="label">Your BMI</span><span class="value" id="rB">—</span></div>
+    <div class="row"><span class="label">Category (WHO)</span><span class="value" id="rCat">—</span></div>
+    <div class="row"><span class="label">Healthy weight range (WHO)</span><span class="value" id="rRange">—</span></div>
+    <div class="row"><span class="label">Healthy weight (Asian-Indian)</span><span class="value" id="rRangeIn">—</span></div>
+    <p class="note" id="rNote" style="display:none"></p>
+  </div>
+
+  <section class="info">
+    <h2>How BMI is calculated</h2>
+    <p>BMI compares your weight to your height squared:</p>
+    <div class="formula">BMI = weight (kg) ÷ height (m)²</div>
+    <p>Example: 65 kg at 1.70 m height → 65 ÷ (1.70 × 1.70) = 65 ÷ 2.89 = <b>22.5</b> (Normal). WHO categories: below 18.5 underweight, 18.5–24.9 normal, 25–29.9 overweight, 30+ obese. Your healthy weight range is simply BMI 18.5–24.9 multiplied by your height squared.</p>
+    <p><b>India-specific:</b> Asian-Indian consensus guidelines (Misra et al.) recommend action from a lower BMI — overweight from 23 and obesity from 27.5 — because Indians tend to carry higher body fat at the same BMI than Europeans.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>BMI kitna sahi indicator hai?</summary><p>Useful screening tool, but limited. Muscle weighs more than fat, so athletes can show "overweight" while being healthy, and a normal BMI can hide excess belly fat. For a fuller picture, doctors also check waist circumference, blood pressure and blood tests — BMI alone sab kuch nahi batata.</p></details>
+    <details class="faq"><summary>India ke liye alag cutoff kyun?</summary><p>Research (ICMR/Misra consensus) shows Asian Indians develop metabolic risk — diabetes, heart disease — at lower BMI levels than Western populations. So overweight is flagged from 23 (not 25) and obesity from 27.5 (not 30).</p></details>
+    <details class="faq"><summary>Kya pregnant women ya bachchon ke liye valid hai?</summary><p>No. This calculator is for adults 18+. Pregnancy changes weight naturally and children need age-and-gender growth charts (WHO child standards) — adult BMI un par apply nahi hota.</p></details>
+    <details class="faq"><summary>Meri BMI high aa rahi hai, kya karun?</summary><p>Panic nahi — ek number se diagnosis nahi hota. Diet, sleep, activity level, family history — sab context matter karta hai. Apni BMI report lekar kisi doctor se discuss karein; woh sahi next steps batayenge. This tool gives information only.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="age-calculator.html"><div class="emoji">🎂</div><div class="name">Age Calculator</div><div class="desc">Exact age in years, months, days.</div></a>
+      <a class="tool-card" href="sip-calculator.html"><div class="emoji">📈</div><div class="name">SIP Calculator</div><div class="desc">SIP returns with yearly step-up.</div></a>
+      <a class="tool-card" href="news.html"><div class="emoji">📰</div><div class="name">Finance News</div><div class="desc">Live India market headlines.</div></a>
+      <a class="tool-card" href="tax-guide.html"><div class="emoji">📕</div><div class="name">Income Tax Guide ₹99</div><div class="desc">Old vs New regime PDF — Hinglish.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Information only — not medical advice.</p>
+  </div>
+</footer>
+<script>
+const $ = id => document.getElementById(id);
+function meters() {
+  if ($('unit').value === 'cm') return (+$('hcm').value || 0) / 100;
+  return ((+$('hft').value || 0) * 12 + (+$('hin').value || 0)) * 0.0254;
+}
+function cat(b) { return b < 18.5 ? 'Underweight' : b < 25 ? 'Normal (healthy)' : b < 30 ? 'Overweight' : 'Obese'; }
+function kg(n) { return new Intl.NumberFormat('en-IN', {maximumFractionDigits: 1}).format(n) + ' kg'; }
+function calc() {
+  const m = meters(), w = +$('weight').value || 0;
+  if (m < 0.5 || m > 2.6 || w <= 0 || w > 500) {
+    ['rB','rCat','rRange','rRangeIn'].forEach(i => $(i).textContent = '—');
+    $('rNote').style.display = 'none';
+    return;
+  }
+  const m2 = m * m, bmi = w / m2;
+  $('rB').textContent = bmi.toFixed(1);
+  $('rCat').textContent = cat(bmi);
+  $('rRange').textContent = kg(18.5 * m2) + ' – ' + kg(24.9 * m2);
+  $('rRangeIn').textContent = kg(18.5 * m2) + ' – ' + kg(22.9 * m2);
+  if (bmi >= 23) {
+    $('rNote').textContent = 'ℹ️ Asian-Indian guidelines stricter hain: overweight 23+ se count hota hai, obesity 27.5+ se.';
+    $('rNote').style.display = 'block';
+  } else {
+    $('rNote').style.display = 'none';
+  }
+}
+$('unit').addEventListener('change', () => {
+  const ft = $('unit').value === 'ft';
+  $('grpFt').style.display = ft ? 'flex' : 'none';
+  $('grpCm').style.display = ft ? 'none' : 'block';
+  calc();
+});
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

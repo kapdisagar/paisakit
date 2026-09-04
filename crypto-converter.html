@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Converter — Live BTC & ETH Price in INR/USD | PaisaKit</title>
+<meta name="description" content="Live Bitcoin and Ethereum prices in INR and USD. Convert BTC to INR or ETH to INR instantly — free crypto converter, prices refreshed every few minutes.">
+<link rel="canonical" href="https://tools.thenexmall.com/crypto-converter.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Crypto Converter","url":"https://tools.thenexmall.com/crypto-converter.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>
+.swapbtn{margin:2px 0 0;padding:8px 14px;border:1px solid var(--border);background:var(--card);border-radius:9px;font-size:.9rem;cursor:pointer;color:var(--green-dark);font-weight:600}
+.swapbtn:hover{border-color:var(--green)}
+.errbox{display:none;background:#fdf1f1;border:1px solid #eccccc;color:#8a2f2f;border-radius:10px;padding:12px 14px;font-size:.9rem;margin-bottom:14px}
+.retry{display:none;margin-bottom:16px;padding:9px 16px;border:1px solid var(--green);background:var(--green);color:#fff;border-radius:9px;font-size:.92rem;cursor:pointer;font-weight:600}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Crypto Converter</h1>
+  <p class="sub">Bitcoin aur Ethereum ka live reference price INR/USD mein — kitna BTC kitne rupees ka hai, turant dekhein.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" value="0.5" min="0" step="any">
+    </div>
+    <div class="field">
+      <label for="coin">Coin</label>
+      <select id="coin">
+        <option value="BTC" selected>BTC — Bitcoin</option>
+        <option value="ETH">ETH — Ethereum</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="cur">Currency</label>
+      <select id="cur">
+        <option value="INR" selected>INR — Indian Rupee</option>
+        <option value="USD">USD — US Dollar</option>
+      </select>
+    </div>
+    <button class="swapbtn" id="swap" type="button">⇅ Swap INR ⇄ USD</button>
+  </div>
+
+  <div class="card results">
+    <div class="row big"><span class="label" id="rLabel">Converted value</span><span class="value" id="rAmt">…</span></div>
+    <p class="note" id="rLine">Loading live prices…</p>
+    <p class="note" id="rStamp">Reference prices via CoinGecko · updated —</p>
+  </div>
+
+  <div class="errbox" id="err">Prices load nahi hue — thodi der baad retry karein. CoinGecko free API kabhi-kabhi busy ho jata hai.</div>
+  <button class="retry" id="retry" type="button">↻ Retry</button>
+
+  <section class="info">
+    <h2>How the value is calculated</h2>
+    <p>Simple multiplication of your coin amount with the coin's current reference price:</p>
+    <div class="formula">Value = Amount × Price(coin, currency)</div>
+    <p>Example: 0.5 BTC at a reference price of ₹98,00,000 per BTC = 0.5 × 98,00,000 = <b>₹49,00,000</b>. Actual prices load live from the API — crypto moves fast, so the number you see now can change within minutes.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Which price is shown here?</summary><p>An aggregated mid-market reference price from CoinGecko, averaged across major exchanges. It is a fair reference point — no exchange will give you exactly this rate. Exchanges add a spread and trading fee, and in India every sale attracts 1% TDS on top.</p></details>
+    <details class="faq"><summary>Crypto gains par India mein tax?</summary><p>As per current Indian tax rules, virtual digital asset gains are taxed at a flat 30% (plus applicable cess), losses cannot be set off against other income, and 1% TDS applies on transfers above threshold limits. Tax rules change — confirm with a CA before filing.</p></details>
+    <details class="faq"><summary>How fresh are the prices?</summary><p>Your browser caches prices for 5 minutes so the page loads fast and saves API quota. Crypto is volatile — treat the shown value as a reference, not a tradable quote.</p></details>
+    <details class="faq"><summary>Is this investment advice?</summary><p>No. This is an information tool only. Crypto assets are volatile and risky; never invest money you cannot afford to lose. Not financial advice.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="currency-converter.html"><div class="emoji">💱</div><div class="name">Currency Converter</div><div class="desc">Live rates for 160+ currencies.</div></a>
+      <a class="tool-card" href="news.html"><div class="emoji">📰</div><div class="name">Finance News</div><div class="desc">Live India market headlines.</div></a>
+      <a class="tool-card" href="tax-guide.html"><div class="emoji">📕</div><div class="name">Income Tax Guide ₹99</div><div class="desc">Old vs New regime PDF — Hinglish.</div></a>
+      <a class="tool-card" href="ifsc-finder.html"><div class="emoji">🔍</div><div class="name">IFSC Finder</div><div class="desc">Any bank branch by IFSC code.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Reference prices only — volatile asset, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const COINS = {BTC:'bitcoin', ETH:'ethereum'};
+const CURS = {INR:'inr', USD:'usd'};
+const KEY = 'pk_crypto_v1', TTL = 5 * 60 * 1000;
+let P = null, TS = 0;
+const $ = id => document.getElementById(id);
+const loc = c => c === 'INR' ? 'en-IN' : 'en-US';
+const curFmt = (n, c) => new Intl.NumberFormat(loc(c), {style:'currency', currency:c, maximumFractionDigits: c === 'INR' ? 0 : 2}).format(n);
+function convert() {
+  if (!P) return;
+  const csym = $('coin').value, cur = $('cur').value;
+  const coin = COINS[csym], cc = CURS[cur];
+  const price = P[coin] && P[coin][cc];
+  if (!price) return;
+  const amt = Math.max(0, +$('amount').value || 0);
+  $('rLabel').textContent = new Intl.NumberFormat('en-IN', {maximumFractionDigits: 8}).format(amt) + ' ' + csym + ' =';
+  $('rAmt').textContent = curFmt(amt * price, cur);
+  $('rLine').textContent = '1 ' + csym + ' = ' + curFmt(price, cur) + '  ·  1 ' + cur + ' = ' + new Intl.NumberFormat('en-IN', {maximumFractionDigits: 8}).format(1 / price) + ' ' + csym;
+  $('rStamp').textContent = 'Reference prices via CoinGecko' + (TS ? ' · fetched ' + new Date(TS).toLocaleTimeString('en-IN', {hour: '2-digit', minute: '2-digit'}) : '');
+}
+function apply(c) { P = c.prices; TS = c.ts || 0; convert(); }
+async function load() {
+  $('err').style.display = 'none'; $('retry').style.display = 'none';
+  let cache = null;
+  try { cache = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+  if (cache && cache.prices && Date.now() - cache.ts < TTL) { apply(cache); return; }
+  try {
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=inr,usd');
+    const j = await res.json();
+    if (!j || !j.bitcoin || !j.bitcoin.inr || !j.ethereum || !j.ethereum.inr) throw new Error('bad payload');
+    const c = {ts: Date.now(), prices: j};
+    try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {}
+    apply(c);
+  } catch (e) {
+    if (cache && cache.prices) {
+      apply(cache);
+      $('rStamp').textContent = '⚠ Live update failed — showing cached prices from ' + new Date(cache.ts).toLocaleTimeString('en-IN');
+      $('retry').style.display = 'inline-block';
+    } else {
+      $('err').style.display = 'block'; $('retry').style.display = 'inline-block';
+      $('rLine').textContent = 'Prices unavailable right now.';
+    }
+  }
+}
+$('swap').addEventListener('click', () => { const s = $('cur'); s.value = s.value === 'INR' ? 'USD' : 'INR'; convert(); });
+['amount','coin','cur'].forEach(id => { $(id).addEventListener('input', convert); $(id).addEventListener('change', convert); });
+$('retry').addEventListener('click', load);
+load();
+</script>
+</body>
+</html>
