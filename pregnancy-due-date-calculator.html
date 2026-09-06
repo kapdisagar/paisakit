@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pregnancy Due Date Calculator — EDD from LMP | PaisaKit</title>
+<meta name="description" content="Find your baby's estimated due date from the first day of your last period (Naegele's rule) with cycle-length adjustment. See current pregnancy week and trimester. Information only, not medical advice.">
+<link rel="canonical" href="https://tools.thenexmall.com/pregnancy-due-date-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Pregnancy Due Date Calculator","url":"https://tools.thenexmall.com/pregnancy-due-date-calculator.html","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>
+.mednote{background:#fdf6ec;border:1px solid #ead9bd;color:#7a5b1f;padding:10px 14px;border-radius:10px;font-size:.88rem;margin-bottom:20px}
+.hrow{display:flex;gap:10px}
+.hrow .field{flex:1}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Pregnancy Due Date Calculator</h1>
+  <p class="sub">Last period (LMP) ki date se estimated due date (EDD) nikalein — wahi Naegele's rule jo doctors first ultrasound se pehle use karte hain, cycle-length adjustment ke saath.</p>
+  <p class="mednote">⚠️ Yeh tool <b>information-only</b> hai — medical advice nahi. Sirf doctor hi ultrasound se accurate dating aur prenatal care bata sakte hain.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="lmp">First day of last menstrual period (LMP)</label>
+      <input type="date" id="lmp">
+    </div>
+    <div class="field">
+      <label for="cycle">Average cycle length (days)</label>
+      <input type="number" id="cycle" value="28" min="20" max="45" step="1">
+      <div class="hint">28 din standard hai. Agar aapke cycles regular par lambe/chhote hain (jaise 30 ya 26), wahi likhein — due date adjust hogi.</div>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row big"><span class="label">Estimated due date (EDD)</span><span class="value" id="rEdd">—</span></div>
+    <div class="row"><span class="label">Current pregnancy stage</span><span class="value" id="rWeek">—</span></div>
+    <div class="row"><span class="label">Trimester</span><span class="value" id="rTri">—</span></div>
+    <div class="row"><span class="label">Estimated days remaining</span><span class="value" id="rLeft">—</span></div>
+    <p class="note" id="rNote" style="display:none"></p>
+  </div>
+
+  <section class="info">
+    <h2>Due date kaise calculate hoti hai</h2>
+    <p>Doctors ka standard starting point <b>Naegele's rule</b> hai — ACOG (American College of Obstetricians and Gynecologists) ke hisaab se EDD = LMP + 280 days (40 weeks):</p>
+    <div class="formula">EDD = LMP + 280 days + (cycle length − 28)</div>
+    <p>Yeh counting LMP ke pehle din se hoti hai, conception se nahi — kyunki exact conception date ko pakadna mushkil hai. Cycle 28 se alag hai toh ovulation shift hota hai, isliye (cycle − 28) din ka adjustment lagta hai. Example: LMP 1 March 2026, 28-day cycle → EDD 6 December 2026.</p>
+    <p><b>Important:</b> LMP-based estimate ek andaza hai. First-trimester ultrasound (11–14 weeks) dating ke liye zyada accurate maana jaata hai, aur doctor usse EDD revise kar sakte hain. Full-term pregnancy 37–42 weeks ke beech kabhi bhi deliver ho sakti hai — sirf ~5% babies exact due date par hoti hain.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Mera cycle irregular hai, kya result sahi hoga?</summary><p>Irregular cycles mein LMP-based estimate ka bharosa kam hota hai, kyunki ovulation ka time pata nahi hota. Calculator ka result rough guide hi rakhein — dating scan (first-trimester ultrasound) hi final EDD dega. Doctor ko apna cycle pattern zaroor batayein.</p></details>
+    <details class="faq"><summary>Pregnancy week kaise count hota hai?</summary><p>Gestational age bhi LMP se hi gini jaati hai: aaj ki date − LMP = days, ko 7 se divide karke weeks + days. Isliye "week 4" par hone ka matlab conception ke ~2 week baad hi hai — yeh normal hai, calendar se confusion mat karein.</p></details>
+    <details class="faq"><summary>Trimester kaise divide hote hain?</summary><p>Common convention: first trimester 0–13 weeks, second 14–27 weeks, third 28 weeks se delivery tak. Har trimester ke tests aur checkups alag hote hain — unka schedule aapke doctor hi batayenge.</p></details>
+    <details class="faq"><summary>EDD ke din hi delivery hogi?</summary><p>Almost never! EDD sirf ek midpoint estimate hai. Statistics ke hisaab se sirf ~5% babies exact date par paida hoti hain; 37–42 weeks (early term se late term) sab normal range mein aata hai. Agar EDD nikal chuki hai toh doctor hi monitoring karega.</p></details>
+    <details class="faq"><summary>IVF ya known conception date ho toh?</summary><p>IVF pregnancies mein doctors transfer date se hi dating karte hain (embryo transfer + 263 days for 5-day embryo, roughly) — LMP method un par apply nahi hota. Is case mein apne fertility doctor ka given EDD hi use karein.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="age-calculator.html"><div class="emoji">🎂</div><div class="name">Age Calculator</div><div class="desc">Exact age in years, months, days.</div></a>
+      <a class="tool-card" href="bmi-calculator.html"><div class="emoji">⚖️</div><div class="name">BMI Calculator</div><div class="desc">Body mass index + healthy weight range.</div></a>
+      <a class="tool-card" href="percentage-calculator.html"><div class="emoji">🧮</div><div class="name">Percentage Calculator</div><div class="desc">X% of Y, % change, marks & discounts.</div></a>
+      <a class="tool-card" href="index.html"><div class="emoji">🧰</div><div class="name">All Tools</div><div class="desc">Finance + health calculators.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Information only — not medical advice.</p>
+  </div>
+</footer>
+<script>
+const $ = id => document.getElementById(id);
+const fmtDate = d => d.toLocaleDateString('en-IN', {day: 'numeric', month: 'long', year: 'numeric'});
+function calc() {
+  const lv = $('lmp').value;
+  const cycle = Math.min(45, Math.max(20, +$('cycle').value || 28));
+  if (!lv) {
+    ['rEdd','rWeek','rTri','rLeft'].forEach(i => $(i).textContent = '—');
+    $('rNote').style.display = 'none';
+    return;
+  }
+  const lmp = new Date(lv + 'T00:00:00');
+  const today = new Date(); today.setHours(0,0,0,0);
+  const daysMs = 86400000;
+  const daysSince = Math.floor((today - lmp) / daysMs);
+  const edd = new Date(lmp.getTime() + (280 + (cycle - 28)) * daysMs);
+  $('rEdd').textContent = fmtDate(edd);
+  if (daysSince < 0) {
+    $('rWeek').textContent = '—';
+    $('rTri').textContent = '—';
+    $('rLeft').textContent = '—';
+    $('rNote').textContent = 'ℹ️ LMP aaj se aage ki date hai — date check karein.';
+    $('rNote').style.display = 'block';
+    return;
+  }
+  const w = Math.floor(daysSince / 7), d = daysSince % 7;
+  $('rWeek').textContent = w + ' weeks ' + d + ' days';
+  $('rTri').textContent = w < 14 ? 'First (0–13 weeks)' : w < 28 ? 'Second (14–27 weeks)' : 'Third (28 weeks +)';
+  const left = Math.floor((edd - today) / daysMs);
+  if (left > 0) {
+    $('rLeft').textContent = '~' + left + ' days';
+    $('rNote').style.display = 'none';
+  } else {
+    $('rLeft').textContent = 'Due date passed';
+    $('rNote').textContent = 'ℹ️ ' + Math.abs(left) + ' din EDD ke baad — agar delivery ho chuki hai toh result ignore karein; dating scan ke bina bahut purani LMP par result galat ho sakta hai.';
+    $('rNote').style.display = 'block';
+  }
+}
+$('lmp').addEventListener('input', calc);
+$('cycle').addEventListener('input', calc);
+calc();
+</script>
+</body>
+</html>
