@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discount Calculator — Final Price, Savings & Real % Off | PaisaKit</title>
+<meta name="description" content="MRP par discount lagakar final price aur savings dekhein. Aur check karein ki '50% off' offer ka asli discount kitna hai — fake discount detector included. Free, instant, no sign-up.">
+<link rel="canonical" href="https://tools.thenexmall.com/discount-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Discount Calculator","url":"https://tools.thenexmall.com/discount-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Discount Calculator</h1>
+  <p class="sub">Sale price aur savings nikalein — aur saath mein check karein ki dikhawa kiya gaya discount sach mein kitna hai.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="mrp">Price / MRP (₹)</label>
+      <input type="number" id="mrp" value="1999" min="1" step="1">
+    </div>
+    <div class="field">
+      <label for="disc">Discount (%)</label>
+      <input type="number" id="disc" value="30" min="0" max="99" step="0.5">
+      <div class="hint">Sale tag par jo % likha hai wahi daalein — final price aur bachat turant dikhegi.</div>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">You pay</span><span class="value" id="rPay">₹0</span></div>
+    <div class="row"><span class="label">You save</span><span class="value" id="rSave">₹0</span></div>
+    <div class="row big"><span class="label">Effective discount</span><span class="value" id="rEff">0%</span></div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0;font-size:1.05rem">Kya offer sach mein sasta hai?</h2>
+    <p class="note" style="margin-top:0">MRP aur jo aapne actually pay kiya daalein — asli discount % nikal aayega. Inflated-MRP "sales" pakadne ke liye.</p>
+    <div class="field">
+      <label for="mrp2">MRP / claimed original price (₹)</label>
+      <input type="number" id="mrp2" value="2999" min="1" step="1">
+    </div>
+    <div class="field">
+      <label for="paid">What you actually paid (₹)</label>
+      <input type="number" id="paid" value="1799" min="0" step="1">
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">Real savings</span><span class="value" id="rSave2">₹0</span></div>
+    <div class="row big"><span class="label">Real discount</span><span class="value" id="rEff2">—</span></div>
+    <p class="note" id="rNote2" style="display:none"></p>
+  </div>
+
+  <section class="info">
+    <h2>How discount is calculated</h2>
+    <p>Basic discount math:</p>
+    <div class="formula">You pay = Price × (1 − Discount% ÷ 100)</div>
+    <p>Example: ₹1,999 par 30% off → discount = ₹599.70, aap pay karenge ₹1,399. Real discount wapas nikalne ke liye: (1 − paid ÷ original) × 100.</p>
+    <p><b>Stacked discounts ka dhyan rakhein:</b> "30% off + extra 10% off" 40% nahi hota. Pehle 30% lagta hai, phir 10% bache hue price par: ₹1,999 → ₹1,399 → ₹1,259. Total sirf <b>37% off</b> hai. Formula: 1 − (1−d₁)(1−d₂).</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>50% off + 50% off = free?</summary><p>Nahi. Do baar 50% ka matlab hai price ka 0.5 × 0.5 = 0.25 bachna — yaani total 75% off, poora free nahi. Stacked offers hamesha ek-ek karke bache hue price par lagte hain.</p></details>
+    <details class="faq"><summary>Sites MRP badha ke discount kyun dikhati hain?</summary><p>Yeh common trick hai — sale se pehle price badha kar bada "% off" dikhana. Bachav ke liye: apne paas pura screenshot rakhein, price-history websites check karein, aur upar wale "real discount" box mein claimed MRP vs paid price daal kar sach dekhein.</p></details>
+    <details class="faq"><summary>Bank offer aur cashback ka kya karun?</summary><p>Instant bank discount final price ko turant kam karta hai — usse paid price mein gina ja sakta hai. Cashback wallet credit hota hai with conditions, isliye guaranteed savings nahi. Dono ko alag treat karein aur sirf instant discount ko real savings count karein.</p></details>
+    <details class="faq"><summary>Kya displayed price par aur kuch pay karna padega?</summary><p>India mein MRP mein GST already included hota hai. Online par delivery fee, handling fee ya surge pricing alag se jud sakti hai — checkout tak ka final amount hi "you pay" hai, wahi use karein.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="percentage-calculator.html"><div class="emoji">🧮</div><div class="name">Percentage Calculator</div><div class="desc">X% of Y, % change, marks.</div></a>
+      <a class="tool-card" href="gst-calculator.html"><div class="emoji">🧾</div><div class="name">GST Calculator</div><div class="desc">Add/remove GST with CGST+SGST split.</div></a>
+      <a class="tool-card" href="emi-calculator.html"><div class="emoji">🏦</div><div class="name">EMI Calculator</div><div class="desc">Loan EMI, interest, total payment.</div></a>
+      <a class="tool-card" href="tax-guide.html"><div class="emoji">📕</div><div class="name">Income Tax Guide ₹99</div><div class="desc">Old vs New regime PDF — Hinglish.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const $ = id => document.getElementById(id);
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:0}).format(n);
+function calcMain() {
+  const mrp = Math.max(0, +$('mrp').value || 0);
+  const d = Math.min(99, Math.max(0, +$('disc').value || 0));
+  const save = mrp * d / 100;
+  $('rPay').textContent = fmt(Math.round(mrp - save));
+  $('rSave').textContent = fmt(Math.round(save));
+  $('rEff').textContent = mrp > 0 ? d + '%' : '—';
+}
+function calcReal() {
+  const mrp = Math.max(0, +$('mrp2').value || 0);
+  const paid = Math.max(0, +$('paid').value || 0);
+  if (mrp <= 0 || $('paid').value === '') {
+    $('rSave2').textContent = '₹0';
+    $('rEff2').textContent = '—';
+    $('rNote2').style.display = 'none';
+    return;
+  }
+  $('rSave2').textContent = fmt(Math.round(mrp - paid));
+  if (paid > mrp) {
+    $('rEff2').textContent = '0%';
+    $('rNote2').textContent = '⚠️ Aap MRP se zyada pay kar rahe ho — offer ki asliyat check karein.';
+    $('rNote2').style.display = 'block';
+  } else {
+    $('rEff2').textContent = ((1 - paid / mrp) * 100).toFixed(1) + '%';
+    $('rNote2').style.display = 'none';
+  }
+}
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', () => { calcMain(); calcReal(); }));
+calcMain(); calcReal();
+</script>
+</body>
+</html>

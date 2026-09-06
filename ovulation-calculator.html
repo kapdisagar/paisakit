@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ovulation Calculator — Fertile Window & Next Period | PaisaKit</title>
+<meta name="description" content="Last period (LMP) aur cycle length se estimated ovulation date aur fertile window nikalein. Simple calendar method jo doctors bhi starting point ke roop mein use karte hain. Information only — not medical advice.">
+<link rel="canonical" href="https://tools.thenexmall.com/ovulation-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Ovulation Calculator","url":"https://tools.thenexmall.com/ovulation-calculator.html","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>
+.mednote{background:#fdf6ec;border:1px solid #ead9bd;color:#7a5b1f;padding:10px 14px;border-radius:10px;font-size:.88rem;margin-bottom:20px}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Ovulation Calculator</h1>
+  <p class="sub">Last period (LMP) ki date aur cycle length se estimated ovulation date aur fertile window nikalein — simple calendar method.</p>
+  <p class="mednote">⚠️ Yeh tool <b>information-only</b> hai — medical advice nahi. Ovulation har month shift ho sakti hai; pregnancy planning ya contraception ke liye doctor hi sahi guidance de sakta hai.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="lmp">First day of last menstrual period (LMP)</label>
+      <input type="date" id="lmp">
+    </div>
+    <div class="field">
+      <label for="cycle">Average cycle length (days)</label>
+      <input type="number" id="cycle" value="28" min="20" max="45" step="1">
+      <div class="hint">Ek period ke pehle din se agli period ke pehle din tak = ek cycle. 21–35 din common hai; 28 standard maana jaata hai.</div>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row big"><span class="label">Estimated ovulation date</span><span class="value" id="rOv">—</span></div>
+    <div class="row"><span class="label">Fertile window (best chances)</span><span class="value" id="rWin">—</span></div>
+    <div class="row"><span class="label">Next period expected</span><span class="value" id="rNext">—</span></div>
+    <p class="note" id="rNote" style="display:none"></p>
+  </div>
+
+  <section class="info">
+    <h2>Ovulation kaise calculate hoti hai</h2>
+    <p>Menstrual cycle ke do hisse hote hain: ovulation se pehle (follicular phase, length badal sakti hai) aur ovulation ke baad (luteal phase, average ~14 din). Isliye standard calendar method yeh hai:</p>
+    <div class="formula">Ovulation day = cycle length − 14 &nbsp;(28-day cycle → day 14; LMP = day 1)</div>
+    <p>Date mein: LMP + (cycle length − 15) din. Example: LMP 1 September, 28-day cycle → ovulation ≈ 14 September, fertile window ≈ 9–15 September, agli period expected 29 September.</p>
+    <p><b>Fertile window kyun 6–7 din?</b> Sperm body ke andar 5 din tak zinda reh sakte hain, aur egg release hone ke baad sirf ~12–24 ghante fertilise ho sakta hai. Isliye ovulation se 5 din pehle se 1 din baad tak conception ke chances hote hain.</p>
+    <p><b>Yeh ek andaza hai:</b> luteal phase 11–17 din tak ho sakta hai aur stress, illness ya travel ovulation shift kar dete hain. Zyada accuracy ke liye LH ovulation kit (urine test) ya doctor ke bataye methods use karein.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Mera cycle irregular hai, kya result sahi hoga?</summary><p>Irregular cycles mein calendar method ka bharosa kam hota hai, kyunki ovulation ka time guess karna mushkil hai. Result ko rough guide hi rakhein. LH ovulation kits zyada reliable hain. Agar cycles aksar 21 din se chhote ya 35 din se bade hain, ya 3+ mahine period miss ho, toh gynaecologist se milna theek rahega.</p></details>
+    <details class="faq"><summary>Kya is calculator se pregnancy avoid ki ja sakti hai?</summary><p>Nahi. Yeh calendar method contraception ke liye reliable nahi hai — ovulation mahine ke hisaab se shift ho sakti hai, aur sperm 5 din tak zinda reh sakte hain. Unplanned pregnancy ka risk rehta hai. Contraception ke liye doctor se discuss kiya gaya proper method use karein.</p></details>
+    <details class="faq"><summary>LH kit aur BBT kya hote hain?</summary><p>LH kit ek urine test hai jo ovulation se ~24–36 ghante pehle LH hormone ka spike detect karta hai — isse ovulation pinpoint hoti hai. BBT (basal body temperature) subah uthte hi temperature note karna hai; ovulation ke baad halka sa rise aata hai, lekin yeh pichhle ovulation ko confirm karta hai, predict nahi karta. Dono milakar calendar estimate se zyada accurate hote hain.</p></details>
+    <details class="faq"><summary>Pregnancy plan karne ke liye best din kaunse hain?</summary><p>Fertile window ke andar, especially ovulation se 1–2 din pehle aur ovulation ke din, chances sabse zyada hote hain. Regular intervals par attempt karna best hai — roz ya roz nahi, dono mein sperm quality theek rehti hai. 1 saal (35 age tak) try karne ke baad bhi pregnancy na ho toh fertility doctor se consult karein; 35 se aage 6 mahine baad hi.</p></details>
+    <details class="faq"><summary>Cycle length har month alag ho toh kya daalun?</summary><p>Pichhle 3–6 cycles ka average lein. Agar 26 se 34 ke beech fluctuate karta hai toh dono extremes ke liye calculator chala kar widest window dekh sakte hain — lekin irregular pattern ko ek baar doctor se discuss karna abhi bhi zaroori hai.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="pregnancy-due-date-calculator.html"><div class="emoji">🤰</div><div class="name">Due Date Calculator</div><div class="desc">Pregnancy EDD from LMP + current week.</div></a>
+      <a class="tool-card" href="bmi-calculator.html"><div class="emoji">⚖️</div><div class="name">BMI Calculator</div><div class="desc">Body mass index + healthy weight range.</div></a>
+      <a class="tool-card" href="age-calculator.html"><div class="emoji">🎂</div><div class="name">Age Calculator</div><div class="desc">Exact age in years, months, days.</div></a>
+      <a class="tool-card" href="index.html"><div class="emoji">🧰</div><div class="name">All Tools</div><div class="desc">Finance + health calculators.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Information only — not medical advice.</p>
+  </div>
+</footer>
+<script>
+const $ = id => document.getElementById(id);
+const fmtDate = d => d.toLocaleDateString('en-IN', {day: 'numeric', month: 'long', year: 'numeric'});
+const DAY = 86400000;
+function calc() {
+  const lv = $('lmp').value;
+  const cycle = Math.min(45, Math.max(20, +$('cycle').value || 28));
+  if (!lv) {
+    ['rOv','rWin','rNext'].forEach(i => $(i).textContent = '—');
+    $('rNote').style.display = 'none';
+    return;
+  }
+  const lmp = new Date(lv + 'T00:00:00');
+  const today = new Date(); today.setHours(0,0,0,0);
+  if (lmp > today) {
+    ['rOv','rWin','rNext'].forEach(i => $(i).textContent = '—');
+    $('rNote').textContent = 'ℹ️ LMP aaj se aage ki date hai — date check karein.';
+    $('rNote').style.display = 'block';
+    return;
+  }
+  const ov = new Date(lmp.getTime() + (cycle - 15) * DAY);
+  const winStart = new Date(ov.getTime() - 5 * DAY);
+  const winEnd = new Date(ov.getTime() + 1 * DAY);
+  const next = new Date(lmp.getTime() + cycle * DAY);
+  $('rOv').textContent = fmtDate(ov);
+  $('rWin').textContent = fmtDate(winStart) + ' – ' + fmtDate(winEnd);
+  $('rNext').textContent = fmtDate(next);
+  if (next < today) {
+    $('rNote').textContent = 'ℹ️ Yeh estimate pichhle cycle ke hisaab se hai — agli period ki LMP se dobara calculate karein.';
+    $('rNote').style.display = 'block';
+  } else {
+    $('rNote').style.display = 'none';
+  }
+}
+$('lmp').addEventListener('input', calc);
+$('cycle').addEventListener('input', calc);
+calc();
+</script>
+</body>
+</html>
