@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideal Weight Calculator — Healthy Weight Range by Height | PaisaKit</title>
+<meta name="description" content="Height ke hisaab se apni healthy weight range janein (WHO BMI 18.5–24.9), Devine formula reference ke saath. Ye information-only tool hai — kisi doctor ki salah ka replacement nahi.">
+<link rel="canonical" href="https://tools.thenexmall.com/ideal-weight-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Ideal Weight Calculator","url":"https://tools.thenexmall.com/ideal-weight-calculator.html","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Ideal Weight Calculator</h1>
+  <p class="sub">Height ke hisaab se healthy weight range dekhein. Ek single "perfect" number nahi hota — ek range hoti hai, aur wo hi zyada honest picture hai.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="height">Height (cm)</label>
+      <input type="number" id="height" value="170" min="120" max="220" step="1">
+    </div>
+    <div class="field">
+      <label for="weight">Your current weight (kg) — optional</label>
+      <input type="number" id="weight" value="70" min="20" max="250" step="0.5">
+      <div class="hint">Weight bharne par batayenge ki aap range me hain ya nahi. Khaali chhod sakte hain.</div>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row big"><span class="label">Healthy weight range</span><span class="value" id="rRange">—</span></div>
+    <div class="row"><span class="label">Reference: Devine (men)</span><span class="value" id="rDevM">—</span></div>
+    <div class="row"><span class="label">Reference: Devine (women)</span><span class="value" id="rDevW">—</span></div>
+    <div class="row" id="statusRow" style="display:none"><span class="label">Your status</span><span class="value" id="rStatus">—</span></div>
+  </div>
+
+  <div class="card" style="border-left:4px solid #e67e22">
+    <p style="margin:0"><strong>Information only — not medical advice.</strong> Ye tool general healthy-range batata hai. Athletes, pregnant women, 18 se kam age aur medical conditions ke liye alag rules lagte hain. Diet ya fitness plan se pehle doctor/registered dietician se consult karein.</p>
+  </div>
+
+  <section class="info">
+    <h2>How the healthy weight range is calculated</h2>
+    <p>WHO (World Health Organization) ke adult BMI guidelines ke hisaab se healthy zone BMI 18.5 se 24.9 tak hai. Weight range nikalne ke liye height se multiply hota hai:</p>
+    <div class="formula">Range = 18.5 × h² &nbsp;to&nbsp; 24.9 × h² &nbsp;(h = height in metres)</div>
+    <p>Example: 170 cm (1.70 m) par — 18.5 × 2.89 = 53.5 kg se 24.9 × 2.89 = 72.0 kg. Is range ke andar ka weight healthy mana jaata hai.</p>
+    <p>Devine formula ek purani clinical reference hai jo single number deta hai: men = 50 kg + 2.3 kg per inch above 5 feet; women = 45.5 kg + 2.3 kg per inch above 5 feet. Ye sirf reference ke liye hai — range isse zyada practical guide hai.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Ek single "ideal" number kyun nahi bataya?</summary><p>Kyunki medically ek number exist nahi karta. 53.5 kg aur 71 kg dono 170 cm height ke liye healthy hain — body composition, bone structure aur muscle mass alag-alag hoti hai. Jo site "sirf ek ideal number" batati hai, wo usually purane rough formula (jaise Devine) ko marketing me convert karti hai. Range zyada honest hai.</p></details>
+    <details class="faq"><summary>Meri BMI 25 se zyada hai, worried hon?</summary><p>BMI ek screening tool hai, diagnosis nahi. Muscle-heavy log (gym athletes, wrestlers) often BMI 25–28 par healthy hote hain kyunki muscle heavy hota hai. Indian guidelines me 23 se overweight aur 27.5 se obesity-risk mana jaata hai — BMI page me detail hai. Koi bhi health decision se pehle doctor se milein.</p></details>
+    <details class="faq"><summary>Bacchon ya teenagers ke liye chalega?</summary><p>Nahi. Ye calculator 18+ adults ke liye hai. Bachchon aur teens me age-aur-gender-specific growth charts (percentile charts) use hote hain — unke liye pediatrician se consult karein.</p></details>
+    <details class="faq"><summary>Weight range ke andar aana hi sufficient hai?</summary><p>Healthy weight ek indicator hai, guarantee nahi. Waist size, blood pressure, sugar, activity level bhi matter karte hain. Ek normal-weight banda metabolically unhealthy ho sakta hai aur slightly heavier banda fit ho sakta hai. Overall lifestyle dekhi jaati hai.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="bmi-calculator.html"><div class="emoji">⚖️</div><div class="name">BMI Calculator</div><div class="desc">Body mass index + WHO categories.</div></a>
+      <a class="tool-card" href="ovulation-calculator.html"><div class="emoji">🌸</div><div class="name">Ovulation Calculator</div><div class="desc">Fertile window & next period estimate.</div></a>
+      <a class="tool-card" href="pregnancy-due-date-calculator.html"><div class="emoji">🤰</div><div class="name">Due Date Calculator</div><div class="desc">Pregnancy EDD from LMP + current week.</div></a>
+      <a class="tool-card" href="news.html"><div class="emoji">📰</div><div class="name">Finance News</div><div class="desc">Live India market headlines.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Information only — not medical advice.</p>
+  </div>
+</footer>
+<script>
+const kg = n => n.toFixed(1) + ' kg';
+function calc() {
+  const hCm = +document.getElementById('height').value || 0;
+  const w = +document.getElementById('weight').value || 0;
+  const weightField = document.getElementById('weight');
+  const h = Math.min(2.2, Math.max(1.2, hCm / 100));
+  if (h > 0) {
+    const min = 18.5 * h * h, max = 24.9 * h * h;
+    document.getElementById('rRange').textContent = kg(min) + ' – ' + kg(max);
+    const inchesOver5ft = (hCm / 2.54) - 60;
+    if (hCm > 0) {
+      document.getElementById('rDevM').textContent = kg(50 + 2.3 * inchesOver5ft);
+      document.getElementById('rDevW').textContent = kg(45.5 + 2.3 * inchesOver5ft);
+    }
+    if (w > 0) {
+      const bmi = w / (h * h);
+      let s, color;
+      if (bmi < 18.5) { s = kg(w) + ' — below healthy range (BMI ' + bmi.toFixed(1) + ')'; color = '#c0392b'; }
+      else if (bmi <= 24.9) { s = kg(w) + ' — within healthy range (BMI ' + bmi.toFixed(1) + ') ✓'; color = '#27ae60'; }
+      else { s = kg(w) + ' — above healthy range (BMI ' + bmi.toFixed(1) + ')'; color = '#e67e22'; }
+      const st = document.getElementById('rStatus');
+      st.textContent = s; st.style.color = color;
+      document.getElementById('statusRow').style.display = 'flex';
+    } else {
+      document.getElementById('statusRow').style.display = 'none';
+    }
+  }
+}
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

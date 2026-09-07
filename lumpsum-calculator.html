@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumpsum Calculator — One-Time Investment Returns | PaisaKit</title>
+<meta name="description" content="Lumpsum investment calculator: ek baar invest kiye paise kitne honge, expected return par. ₹1 lakh @12% for 10 years = ₹3.1 lakh. Free, instant, no sign-up.">
+<link rel="canonical" href="https://tools.thenexmall.com/lumpsum-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Lumpsum Calculator","url":"https://tools.thenexmall.com/lumpsum-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Lumpsum Calculator</h1>
+  <p class="sub">One-time investment ka future value dekhein — bonus, maturity ya savings ka ek saath invest karne par kitna ban sakta hai.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="principal">Investment amount (₹)</label>
+      <input type="number" id="principal" value="100000" min="500" step="1000">
+    </div>
+    <div class="field">
+      <label for="rate">Expected return (% p.a.)</label>
+      <input type="number" id="rate" value="12" min="1" max="30" step="0.5">
+      <div class="hint">Equity mutual funds ne historically ~10–12% diya hai long-term — but returns are NOT guaranteed. FD-type safety chahiye to 6–7% use karein.</div>
+    </div>
+    <div class="field">
+      <label for="years">Time period (years)</label>
+      <input type="number" id="years" value="10" min="1" max="40" step="1">
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">Invested amount</span><span class="value" id="rP">₹0</span></div>
+    <div class="row"><span class="label">Estimated returns</span><span class="value" id="rI">₹0</span></div>
+    <div class="row big"><span class="label">Total value</span><span class="value" id="rM">₹0</span></div>
+  </div>
+
+  <section class="info">
+    <h2>How lumpsum returns are calculated</h2>
+    <p>Lumpsum growth assumes the money compounds once per year at a fixed rate:</p>
+    <div class="formula">M = P × (1 + r)^t</div>
+    <p>where P is the invested amount, r the expected annual return and t the years held. Example: ₹1,00,000 at 12% for 10 years = 1,00,000 × (1.12)^10 ≈ ₹3,10,585.</p>
+    <p><strong>Important:</strong> mutual fund returns market se milte hain, fixed nahi. Ek saal +30%, agle saal −10% ho sakta hai. Ye calculator ek constant average return maan kar estimate deta hai — actual value alag ho sakti hai.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Lumpsum better hai ya SIP?</summary><p>Lumpsum tabhi better hota hai jab market aage badhne ka strong chance ho, kyunki pura paisa jaldi se compounding shuru kar deta hai. Par market timing mushkil hai — isliye regular income waalon ke liye SIP generally safer aur disciplined option mana jaata hai. Bonus/maturity jaise one-time paise ke liye lumpsum (ya STP ke through dheere-dheere) sensible hai.</p></details>
+    <details class="faq"><summary>12% return realistic hai?</summary><p>Historically, Nifty/Sensex ne long periods me ~11–14% annual diya hai, aur diversified equity funds ne iske aas-paas. Par ye average hai — koi bhi specific 10 saal me returns 6% se 18% tak ho sakte hain. Guaranteed nahi. Conservative planning ke liye 9–10% use karein.</p></details>
+    <details class="faq"><summary>Mutual fund gains par tax lagta hai?</summary><p>Haan. Equity funds me 1 saal se kam hold = STCG (20%), aur 1 saal se zyada hold = LTCG (12.5%, ₹1.25 lakh annual gain ke baad) — rates FY2026-27 ke hisaab se verify karein. Debt funds alag rules par taxed hote hain, slab rate ke hisaab se. Is calculator me tax included nahi hai.</p></details>
+    <details class="faq"><summary>Inflation adjust karke dikhayein?</summary><p>Aap return rate se inflation minus karke dekh sakte hain: agar 12% return aur ~5% average inflation expect kar rahe hain, to "real" growth ke liye 7% daal kar dekhein. Aaj ke paise ki value me picture aisi banti hai.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="sip-calculator.html"><div class="emoji">📈</div><div class="name">SIP Calculator</div><div class="desc">Monthly SIP returns with yearly step-up.</div></a>
+      <a class="tool-card" href="fd-calculator.html"><div class="emoji">💰</div><div class="name">FD Calculator</div><div class="desc">Fixed deposit maturity, quarterly compounding.</div></a>
+      <a class="tool-card" href="ppf-calculator.html"><div class="emoji">🛡️</div><div class="name">PPF Calculator</div><div class="desc">15-year PPF year-by-year table.</div></a>
+      <a class="tool-card" href="tax-guide.html"><div class="emoji">📕</div><div class="name">Income Tax Guide ₹99</div><div class="desc">Old vs New regime PDF — Hinglish.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:0}).format(n);
+function calc() {
+  const P = Math.max(0, +document.getElementById('principal').value || 0);
+  const r = Math.max(0, +document.getElementById('rate').value || 0);
+  const t = Math.min(40, Math.max(1, +document.getElementById('years').value || 1));
+  const M = P * Math.pow(1 + r / 100, t);
+  document.getElementById('rP').textContent = fmt(P);
+  document.getElementById('rI').textContent = fmt(Math.round(M - P));
+  document.getElementById('rM').textContent = fmt(Math.round(M));
+}
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

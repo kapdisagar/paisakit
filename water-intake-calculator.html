@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Intake Calculator — Daily Paani Kitna Piyein? | PaisaKit</title>
+<meta name="description" content="Weight aur daily activity ke hisaab se paani ka target nikalein (~30-35 ml/kg rule, exercise aur garmi ka adjustment included). Information only — not medical advice, consult a doctor.">
+<link rel="canonical" href="https://tools.thenexmall.com/water-intake-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Water Intake Calculator","url":"https://tools.thenexmall.com/water-intake-calculator.html","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Water Intake Calculator</h1>
+  <p class="sub">Apne weight aur daily routine ke hisaab se din ka paani target estimate karein — simple science-based rule, koi guessing nahi.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" value="70" min="20" max="200" step="1">
+    </div>
+    <div class="field">
+      <label for="exercise">Exercise / workout (minutes per day)</label>
+      <input type="number" id="exercise" value="30" min="0" max="300" step="5">
+      <div class="hint">Walking, gym, running, yoga — jo bhi pasine wali activity.</div>
+    </div>
+    <div class="field">
+      <label for="hot">Aaj garmi / humid weather hai?</label>
+      <select id="hot">
+        <option value="no">Nahi — normal weather</option>
+        <option value="yes">Haan — bahut garmi / pasina</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">Baseline (weight-based)</span><span class="value" id="rB">—</span></div>
+    <div class="row"><span class="label">Exercise extra</span><span class="value" id="rE">—</span></div>
+    <div class="row big"><span class="label">Daily target</span><span class="value" id="rT">—</span></div>
+    <div class="row"><span class="label">Roughly (200 ml glass)</span><span class="value" id="rG">—</span></div>
+  </div>
+
+  <p class="sub" style="margin-top:1rem">⚕️ <strong>Ye information-only estimate hai, medical advice nahi.</strong> Kidney, heart ya koi medical condition ho toh doctor ke bataye fluid limit hi follow karein.</p>
+
+  <section class="info">
+    <h2>How this is calculated</h2>
+    <p>Nutrition studies ka common rule of thumb: healthy adults ke liye roughly <strong>30–35 ml paani per kg body weight</strong> per day:</p>
+    <div class="formula">Water ≈ weight (kg) × 35 ml + 12 ml × exercise minutes (+ 500 ml if hot weather)</div>
+    <p>Example: 70 kg person, 30 min workout, normal weather = 70 × 35 + 360 ≈ <strong>2.8 litres/day</strong>. Garmi me +500 ml ho jayega.</p>
+    <p>Ye target paani ke liye hai — chai, coffee, milk, soup, fruits bhi total fluid me count hote hain. Khana se bhi ~20% hydration aati hai. Ek saath litres force mat piyein — din bhar thoda-thoda piyein.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Kya chai/coffee bhi count hoti hai?</summary><p>Haan — sab fluids body me count hote hain, moderate chai/coffee dehydration nahi karti. Bas added sugar kam rakhein. Paani best hai kyunki zero-calorie hai.</p></details>
+    <details class="faq"><summary>Zyada paani peekar koi nuksan?</summary><p>Bahut rare, lekin hota hai — hyponatremia (sodium bahut low) jab thodi hi der me bahut zyada paani force kiya jaye. Thirst aur pasina follow karein, ek baithak me litres nahi. Kidney ya heart condition wale patients ko doctor fluid restrict karta hai — unke liye ye calculator applicable nahi.</p></details>
+    <details class="faq"><summary>Pyaas lagtab nahi hai toh bhi peena chahiye?</summary><p>Young healthy logon ke liye thirst ek decent guide hai. Lekin budhe log, busy log aur garmi me pyaas late notice hoti hai — unke liye ye fixed target useful hai. Pee ka rang light-yellow hona chahiye, dark nahi.</p></details>
+    <details class="faq"><summary>Workout me extra kitna chahiye?</summary><p>Roughly 350–500 ml per 30 minutes ki sweaty activity. Lambi run ya outdoor kaam me aur zyada — plus electrolytes (namak/nariyal paani) agar bahut pasina aaya ho.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="bmi-calculator.html"><div class="emoji">⚖️</div><div class="name">BMI Calculator</div><div class="desc">Body mass index + healthy range.</div></a>
+      <a class="tool-card" href="ideal-weight-calculator.html"><div class="emoji">📏</div><div class="name">Ideal Weight Calculator</div><div class="desc">Height ke hisaab se weight range.</div></a>
+      <a class="tool-card" href="pregnancy-due-date-calculator.html"><div class="emoji">🤰</div><div class="name">Due Date Calculator</div><div class="desc">Pregnancy EDD from LMP.</div></a>
+      <a class="tool-card" href="news.html"><div class="emoji">📰</div><div class="name">Finance News</div><div class="desc">Live India market headlines.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Information only, not medical advice — consult a doctor.</p>
+  </div>
+</footer>
+<script>
+function calc() {
+  const w = Math.max(0, +document.getElementById('weight').value || 0);
+  const ex = Math.max(0, +document.getElementById('exercise').value || 0);
+  const hot = document.getElementById('hot').value === 'yes';
+  const base = w * 35;
+  const extra = ex * 12;
+  const hotExtra = hot ? 500 : 0;
+  const total = base + extra + hotExtra;
+  document.getElementById('rB').textContent = (base / 1000).toFixed(2) + ' L';
+  document.getElementById('rE').textContent = '+' + ((extra + hotExtra) / 1000).toFixed(2) + ' L';
+  document.getElementById('rT').textContent = (total / 1000).toFixed(1) + ' L / day';
+  document.getElementById('rG').textContent = Math.round(total / 200) + ' glasses';
+}
+document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>
