@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compound Interest Calculator — Compounding Growth | PaisaKit</title>
+<meta name="description" content="Compound interest calculator: yearly, half-yearly, quarterly ya monthly compounding par final amount aur total interest dekhein. Rule of 72 aur effective annual rate included. Free, no sign-up.">
+<link rel="canonical" href="https://tools.thenexmall.com/compound-interest-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator","url":"https://tools.thenexmall.com/compound-interest-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9368252211027210"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Compound Interest Calculator</h1>
+  <p class="sub">Interest par bhi interest — compounding ka real power dekhein. Yearly, half-yearly, quarterly ya monthly compounding choose karein.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="principal">Principal amount (₹)</label>
+      <input type="number" id="principal" value="100000" min="100" step="500">
+    </div>
+    <div class="field">
+      <label for="rate">Interest rate (% per year)</label>
+      <input type="number" id="rate" value="10" min="0.1" max="60" step="0.05">
+      <div class="hint">Bank FDs aajkal ~6.5-7.5% dete hain; equity funds long-term me 10-12% expect kiye jate hain (guaranteed nahi).</div>
+    </div>
+    <div class="field">
+      <label for="years">Time (years)</label>
+      <input type="number" id="years" value="5" min="0.25" max="40" step="0.25">
+    </div>
+    <div class="field">
+      <label for="freq">Compounding frequency</label>
+      <select id="freq">
+        <option value="1">Yearly (once a year)</option>
+        <option value="2">Half-yearly</option>
+        <option value="4" selected>Quarterly (bank FD style)</option>
+        <option value="12">Monthly</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">Principal</span><span class="value" id="rP">₹0</span></div>
+    <div class="row"><span class="label">Interest earned</span><span class="value" id="rI">₹0</span></div>
+    <div class="row big"><span class="label">Total value</span><span class="value" id="rT">₹0</span></div>
+    <div class="hint">Effective annual rate: <span id="rEar">0%</span> — jitni zyada baar compounding, utna zyada asli return.</div>
+  </div>
+
+  <section class="info">
+    <h2>Compound interest formula</h2>
+    <div class="formula">A = P × (1 + r/n)^(n × t)</div>
+    <p>n is the number of compounding periods per year (1 yearly, 2 half-yearly, 4 quarterly, 12 monthly). Worked example: ₹1,00,000 @ 10% for 5 years — annual compounding → <strong>₹1,61,051</strong>; quarterly compounding → <strong>₹1,63,862</strong>. Wahi 10%, sirf frequency ka fark: ₹2,811 extra.</p>
+    <h2>Rule of 72 — doubling time</h2>
+    <p>72 ko rate se divide karein, approximate years milenge jisme paisa double hoga: 72 ÷ 10 = ~7.2 saal, 72 ÷ 8 = ~9 saal. Quick mental math for any investment pitch.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Compounding frequency se kitna fark padta hai?</summary><p>₹1 lakh @ 10% for 5 years: annual ₹1,61,051, quarterly ₹1,63,862, monthly ₹1,64,531. Short tenure me fark chhota, lekin 20-25 saal me compounding frequency ka asli magic dikhta hai — aur time hi compounding ka sabse bada dost hai.</p></details>
+    <details class="faq"><summary>Kya mutual fund returns compound hote hain?</summary><p>Growth-option funds me returns declare na hone ki wajah se technically "compounding" nahi kaha jata, lekin reinvested growth ka effect same hota hai — NAV growth par further growth. SIP + long tenure isi power ka use karta hai. SIP calculator se monthly investment ka projection dekhein.</p></details>
+    <details class="faq"><summary>Effective annual rate kya hai?</summary><p>Jab compounding yearly se zyada baar hoti hai (quarterly/monthly), to stated rate se asli annual return zyada hota hai. 10% quarterly compounding ka effective annual rate ~10.38% hai. Loan offers compare karte waqt effective rate dekhein, sirf headline rate nahi.</p></details>
+    <details class="faq"><summary>Simple interest vs compound interest?</summary><p>Simple interest hamesha original principal par lagta hai — growth linear. Compound interest interest par bhi interest lagata hai — growth exponential. Same 10% for 5 years: SI ₹50,000 vs CI ₹61,051. Savings ke liye compounding hamesha better.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="sip-calculator.html"><div class="emoji">📈</div><div class="name">SIP Calculator</div><div class="desc">Monthly SIP returns with step-up.</div></a>
+      <a class="tool-card" href="lumpsum-calculator.html"><div class="emoji">🎯</div><div class="name">Lumpsum Calculator</div><div class="desc">One-time investment future value.</div></a>
+      <a class="tool-card" href="cagr-calculator.html"><div class="emoji">🚀</div><div class="name">CAGR Calculator</div><div class="desc">Annualised return of any investment.</div></a>
+      <a class="tool-card" href="fd-calculator.html"><div class="emoji">💰</div><div class="name">FD Calculator</div><div class="desc">Bank FD maturity, quarterly compounding.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:0}).format(n);
+function calc() {
+  const P = Math.max(0, +document.getElementById('principal').value || 0);
+  const r = Math.max(0, +document.getElementById('rate').value || 0);
+  const t = Math.min(40, Math.max(0.25, +document.getElementById('years').value || 1));
+  const n = +document.getElementById('freq').value;
+  const A = P * Math.pow(1 + r / (100 * n), n * t);
+  const ear = (Math.pow(1 + r / (100 * n), n) - 1) * 100;
+  document.getElementById('rP').textContent = fmt(P);
+  document.getElementById('rI').textContent = fmt(Math.round(A - P));
+  document.getElementById('rT').textContent = fmt(Math.round(A));
+  document.getElementById('rEar').textContent = ear.toFixed(2) + '% p.a.';
+}
+document.querySelectorAll('input, select').forEach(el => { el.addEventListener('input', calc); el.addEventListener('change', calc); });
+calc();
+</script>
+</body>
+</html>
