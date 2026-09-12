@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Income Tax Calculator — Old vs New Regime FY 2026-27 | PaisaKit</title>
+<meta name="description" content="Compare old vs new tax regime for FY 2026-27 instantly. Salary, deductions aur age daalein — dekhein kaunsa regime zyada tax bachata hai. Free, no sign-up.">
+<link rel="canonical" href="https://tools.thenexmall.com/income-tax-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Income Tax Calculator (Old vs New Regime)","url":"https://tools.thenexmall.com/income-tax-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9368252211027210"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>Income Tax Calculator — Old vs New Regime</h1>
+  <p class="sub">FY 2026-27 (AY 2027-28) ke slabs par dono regimes compare karein. Salary, deductions aur age daalein — turant pata chalein kaunsa better hai.</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="gross">Gross annual income (₹)</label>
+      <input type="number" id="gross" value="1275000" min="0" step="25000">
+      <div class="hint">Salary + bonus + other income, before any deductions.</div>
+    </div>
+    <div class="field">
+      <label for="type">Income type</label>
+      <select id="type">
+        <option value="salary" selected>Salary / Pension (standard deduction applies)</option>
+        <option value="other">Business / Other income</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="age">Age group</label>
+      <select id="age">
+        <option value="general" selected>Below 60</option>
+        <option value="senior">Senior citizen (60–79)</option>
+        <option value="super">Super senior (80+)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="ded">Old-regime deductions (₹)</label>
+      <input type="number" id="ded" value="150000" min="0" step="10000">
+      <div class="hint">80C + 80D + HRA + home-loan interest + NPS etc. — total you can claim. Applies to the old regime only.</div>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">Old regime taxable income</span><span class="value" id="rTo">₹0</span></div>
+    <div class="row"><span class="label">New regime taxable income</span><span class="value" id="rTn">₹0</span></div>
+    <div class="row"><span class="label">Old regime tax (incl. 4% cess)</span><span class="value" id="rOld">₹0</span></div>
+    <div class="row"><span class="label">New regime tax (incl. 4% cess)</span><span class="value" id="rNew">₹0</span></div>
+    <div class="row big"><span class="label">Verdict</span><span class="value" id="rVerdict">—</span></div>
+  </div>
+
+  <section class="info">
+    <h2>How the comparison works</h2>
+    <p>Same gross income is taxed under both regimes. New regime: standard deduction ₹75,000 for salaried/pensioners, and your other deductions do not apply. Old regime: standard deduction ₹50,000 plus the deductions you entered above.</p>
+    <div class="formula">New regime slabs (FY 2026-27): 0–4L nil · 4–8L 5% · 8–12L 10% · 12–16L 15% · 16–20L 20% · 20–24L 25% · 24L+ 30%</div>
+    <div class="formula">Old regime slabs: 0–2.5L nil · 2.5–5L 5% · 5–10L 20% · 10L+ 30% (basic exemption ₹3L senior, ₹5L super-senior)</div>
+    <p><strong>Rebate:</strong> New regime — zero tax if taxable income ≤ ₹12 lakh (with marginal relief just above it). Old regime — rebate up to ₹12,500 if taxable income ≤ ₹5 lakh. Health &amp; education cess of 4% is added to both.</p>
+    <p><strong>Worked example:</strong> ₹12.75 lakh salary, ₹1.5 lakh in 80C — old regime tax is ₹1,40,400; new regime tax is <em>zero</em> (rebate covers ₹12 lakh taxable). At ₹15 lakh salary with ₹1.75 lakh deductions: old ₹2,02,800 vs new ₹97,500 — over ₹1 lakh saved in the new regime.</p>
+    <p><strong>Simplifications:</strong> Surcharge (income above ₹50 lakh), special-rate income like capital gains, professional tax and employer NPS are not included. Actual liability may differ slightly.</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Which regime is the default?</summary><p>The new regime is the default from FY 2023-24 onwards. If you do nothing while filing, your tax is computed in the new regime. Salaried employees can opt for the old regime every year; those with business income can switch back to the old regime only once.</p></details>
+    <details class="faq"><summary>New regime mein zero tax kab hota hai?</summary><p>If taxable income (after ₹75,000 standard deduction) is ₹12 lakh or less, the 87A rebate wipes out the entire tax — so salaried people with gross income up to ₹12.75 lakh pay zero tax in the new regime, with marginal relief for incomes slightly above.</p></details>
+    <details class="faq"><summary>Old regime kab better hota hai?</summary><p>When your total deductions are large — 80C (₹1.5L), 80D health insurance, HRA, home-loan interest, NPS. At higher incomes you typically need ₹4–6 lakh of deductions for the old regime to win. Don't guess — enter your real deduction total and let the calculator decide.</p></details>
+    <details class="faq"><summary>What deductions are still allowed in the new regime?</summary><p>Standard deduction ₹75,000 for salaried/pensioners, employer's NPS contribution under 80CCD(2), and a few employer-linked deductions. 80C, 80D, HRA, LTA and home-loan interest are NOT available in the new regime.</p></details>
+    <details class="faq"><summary>Kya yahi final tax hai?</summary><p>No. This is an estimate for FY 2026-27 (AY 2027-28) excluding surcharge and special-rate incomes. For filing, verify with the official Income Tax e-filing calculator or a CA.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="tax-guide.html"><div class="emoji">📕</div><div class="name">Income Tax Guide ₹99</div><div class="desc">Old vs New regime PDF — Hinglish.</div></a>
+      <a class="tool-card" href="gst-calculator.html"><div class="emoji">🧾</div><div class="name">GST Calculator</div><div class="desc">Add or remove GST with CGST+SGST split.</div></a>
+      <a class="tool-card" href="fd-calculator.html"><div class="emoji">💰</div><div class="name">FD Calculator</div><div class="desc">FD maturity with quarterly compounding.</div></a>
+      <a class="tool-card" href="sip-calculator.html"><div class="emoji">📈</div><div class="name">SIP Calculator</div><div class="desc">SIP returns with yearly step-up.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:0}).format(n);
+function slabTax(x, bands) {
+  let t = 0, prev = 0;
+  for (const [cap, rate] of bands) {
+    if (x > prev) { t += (Math.min(x, cap) - prev) * rate; prev = cap; } else break;
+  }
+  return t;
+}
+const OLD_BANDS = {
+  general: [[250000, 0], [500000, .05], [1000000, .20], [Infinity, .30]],
+  senior:  [[300000, 0], [500000, .05], [1000000, .20], [Infinity, .30]],
+  super:   [[500000, 0], [1000000, .20], [Infinity, .30]]
+};
+const NEW_BANDS = [[400000, 0], [800000, .05], [1200000, .10], [1600000, .15], [2000000, .20], [2400000, .25], [Infinity, .30]];
+function oldRegime(taxable, age) {
+  let tax = slabTax(taxable, OLD_BANDS[age]);
+  if (taxable <= 500000) tax = Math.max(0, tax - Math.min(tax, 12500)); // 87A rebate
+  return Math.round(tax * 1.04);
+}
+function newRegime(taxable) {
+  let tax = slabTax(taxable, NEW_BANDS);
+  if (taxable <= 1200000) {
+    tax = Math.max(0, tax - Math.min(tax, 60000)); // 87A rebate
+  } else {
+    tax = Math.min(tax, taxable - 1200000); // marginal relief just above 12L
+  }
+  return Math.round(tax * 1.04);
+}
+function calc() {
+  const gross = Math.max(0, +document.getElementById('gross').value || 0);
+  const salaried = document.getElementById('type').value === 'salary';
+  const age = document.getElementById('age').value;
+  const ded = Math.max(0, +document.getElementById('ded').value || 0);
+  const tOld = Math.max(0, gross - (salaried ? 50000 : 0) - ded);
+  const tNew = Math.max(0, gross - (salaried ? 75000 : 0));
+  const taxOld = oldRegime(tOld, age);
+  const taxNew = newRegime(tNew);
+  document.getElementById('rTo').textContent = fmt(tOld);
+  document.getElementById('rTn').textContent = fmt(tNew);
+  document.getElementById('rOld').textContent = fmt(taxOld);
+  document.getElementById('rNew').textContent = fmt(taxNew);
+  const save = Math.abs(taxOld - taxNew);
+  document.getElementById('rVerdict').textContent =
+    save < 1 ? 'Same tax in both regimes' :
+    taxNew < taxOld ? 'New regime better — save ' + fmt(save) + '/yr' :
+    'Old regime better — save ' + fmt(save) + '/yr';
+}
+document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

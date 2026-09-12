@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWP Calculator — Systematic Withdrawal Plan Duration | PaisaKit</title>
+<meta name="description" content="SWP calculator: check how long your mutual fund corpus will last with monthly withdrawals, and its balance after 10 years. Free, instant, no sign-up.">
+<link rel="canonical" href="https://tools.thenexmall.com/swp-calculator.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"SWP Calculator","url":"https://tools.thenexmall.com/swp-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}
+</script>
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8KBEJ9JQFH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8KBEJ9JQFH');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9368252211027210"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html">💸 PaisaKit</a>
+    <nav class="mainnav"><a href="index.html">All Tools</a></nav>
+  </div>
+</header>
+<main class="container">
+  <h1>SWP Calculator</h1>
+  <p class="sub">Systematic Withdrawal Plan — mutual fund corpus se har mahine fixed amount nikaalte hue, kitne saal chalega aur 10 saal baad kitna bachega?</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="corpus">Initial corpus (₹)</label>
+      <input type="number" id="corpus" value="2500000" min="10000" step="50000">
+    </div>
+    <div class="field">
+      <label for="withdraw">Monthly withdrawal (₹)</label>
+      <input type="number" id="withdraw" value="15000" min="0" step="500">
+    </div>
+    <div class="field">
+      <label for="rate">Expected return (% p.a.)</label>
+      <input type="number" id="rate" value="8" min="0" max="20" step="0.5">
+      <div class="hint">Hybrid/balanced funds: 7–9% is a conservative estimate. Equity: higher long-term but with ups and downs.</div>
+    </div>
+  </div>
+
+  <div class="card results">
+    <div class="row"><span class="label">First-month interest (approx.)</span><span class="value" id="rInt">₹0</span></div>
+    <div class="row"><span class="label">Corpus lasts</span><span class="value" id="rLast">—</span></div>
+    <div class="row big"><span class="label">Balance after 10 years</span><span class="value" id="r10">₹0</span></div>
+  </div>
+
+  <section class="info">
+    <h2>How SWP is calculated</h2>
+    <p>Every month, your balance first grows by the monthly return, then the withdrawal is deducted:</p>
+    <div class="formula">B(n) = P × (1 + r)<sup>n</sup> − W × [((1 + r)<sup>n</sup> − 1) / r]</div>
+    <p>where P is the corpus, W the monthly withdrawal and r the <em>monthly</em> rate (annual rate ÷ 12). The calculator simulates this month by month.</p>
+    <p><strong>Worked example:</strong> ₹25,00,000 corpus, ₹15,000/month withdrawal at 8% p.a. — first-month interest is ₹16,667, more than the withdrawal, so the balance grows: roughly ₹25.2 lakh after 1 year and ₹28.1 lakh after 10 years. But withdraw ₹20,000/month instead and the corpus runs out in about 22.5 years (270 months).</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>SWP kya hai — FD se better hai monthly income ke liye?</summary><p>SWP means withdrawing a fixed amount from a mutual fund every month. Long-term returns are usually higher than FD, and tax can be lower too (only the gains part of each withdrawal is taxed at capital-gains rates, not the full interest at slab rate). The trade-off: returns are not guaranteed — markets can dip, especially early on.</p></details>
+    <details class="faq"><summary>Kitna withdrawal safe maana jaata hai?</summary><p>A common rule of thumb: keep annual withdrawals around 4–6% of the corpus. If your monthly withdrawal is less than the monthly interest earned (like ₹15,000 vs ₹16,667 interest on ₹25 lakh at 8%), the corpus never depletes. Withdraw more than that and it starts shrinking.</p></details>
+    <details class="faq"><summary>Expected return kitna assume karun?</summary><p>Be conservative. Hybrid/balanced funds: 7–9%. Equity funds: 10–12% long-term average, but the early years can be volatile — if markets fall right after you start, a heavy withdrawal drains the corpus faster (sequence-of-returns risk). Many people withdraw less in the first few years.</p></details>
+    <details class="faq"><summary>SWP par tax kaise lagta hai?</summary><p>Each withdrawal has two parts: your own capital (no tax) and gains (taxable). For equity funds: 12.5% LTCG on gains above ₹1.25 lakh/year if held over 12 months, 20% STCG otherwise. Debt funds are taxed at your slab rate. This calculator shows pre-tax numbers — actual in-hand amount will differ.</p></details>
+  </section>
+  <section class="info">
+    <h2>Related tools</h2>
+    <div class="tools-grid">
+      <a class="tool-card" href="sip-calculator.html"><div class="emoji">📈</div><div class="name">SIP Calculator</div><div class="desc">SIP returns with yearly step-up.</div></a>
+      <a class="tool-card" href="lumpsum-calculator.html"><div class="emoji">🎯</div><div class="name">Lumpsum Calculator</div><div class="desc">One-time investment ka future value.</div></a>
+      <a class="tool-card" href="cagr-calculator.html"><div class="emoji">🚀</div><div class="name">CAGR Calculator</div><div class="desc">Annualised growth rate nikalein.</div></a>
+      <a class="tool-card" href="fd-calculator.html"><div class="emoji">💰</div><div class="name">FD Calculator</div><div class="desc">FD maturity with quarterly compounding.</div></a>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <div class="container">
+    <div class="links"><a href="index.html">All Tools</a> <a href="about.html">About</a> <a href="privacy.html">Privacy</a></div>
+    <p>© 2026 PaisaKit · Estimates only, not financial advice.</p>
+  </div>
+</footer>
+<script>
+const fmt = n => new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:0}).format(n);
+function duration(months) {
+  const y = Math.floor(months / 12), m = months % 12;
+  if (y === 0) return m + ' month' + (m !== 1 ? 's' : '');
+  if (m === 0) return y + ' year' + (y !== 1 ? 's' : '');
+  return y + ' yr ' + m + ' mo';
+}
+function calc() {
+  const P = Math.max(0, +document.getElementById('corpus').value || 0);
+  const W = Math.max(0, +document.getElementById('withdraw').value || 0);
+  const r = Math.min(20, Math.max(0, +document.getElementById('rate').value || 0)) / 1200; // monthly rate
+  document.getElementById('rInt').textContent = fmt(Math.round(P * r));
+  // How long does it last? (cap at 600 months)
+  let B = P, lasted = null;
+  for (let m = 1; m <= 600; m++) {
+    if (B * (1 + r) - W <= 0) { lasted = m; break; }
+    B = B * (1 + r) - W;
+  }
+  document.getElementById('rLast').textContent =
+    lasted === null ? (W === 0 ? 'Never — no withdrawal' : 'Never depletes') : duration(lasted);
+  // Balance after 10 years
+  B = P; let alive = true;
+  for (let m = 1; m <= 120; m++) {
+    B = B * (1 + r) - W;
+    if (B <= 0) { B = 0; alive = false; break; }
+  }
+  document.getElementById('r10').textContent = fmt(Math.round(B));
+}
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>
